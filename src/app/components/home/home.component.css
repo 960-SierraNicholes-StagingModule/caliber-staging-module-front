@@ -19,14 +19,14 @@
 }
 
 .title {
-    margin: 10px auto;
+    margin: 10px auto 80px auto ;
     font-size: 1.5rem;
     font-weight: 100;
     letter-spacing: 2px;
     text-align: center;
     display : block;
     position : relative;
-    bottom: 50px;
+    bottom: 10px;
 }
 
 .right {
