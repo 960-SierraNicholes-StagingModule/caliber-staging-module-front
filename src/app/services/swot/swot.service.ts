@@ -118,7 +118,7 @@ export class SwotService {
    * This method make a delete request to delete a swot item based on Id
    * @param swotItemId
    */
-  deleteItem(swotItemId: number): Observable<any> {
+   deleteItem(swotItemId: number): Observable<any> {
     return this.http
       .delete<any>(`${environment.BASE_URL}swot/item/delete/${swotItemId}`)
       .pipe(catchError(this.handleError<any>('deleteSwotItem')));
