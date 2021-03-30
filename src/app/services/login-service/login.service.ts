@@ -15,4 +15,10 @@ export class LoginService {
       email
     );
   }
+  getAssociateId(email: string): Observable<string> {
+    return this.httpClient.post<string>(
+      `${environment.BASE_URL}associate`,
+      email
+    );
+  }
 }

@@ -35,8 +35,19 @@ describe('LoginService', () => {
       }
     );
 
-    const req = httpMock.expectOne(`${environment.BASE_URL}getmanager`);
+    const req = httpMock.expectOne(`${environment.BASE_URL}getManager`);
     expect(req.request.method).toBe('POST');
     req.flush("1");
   });
+
+  // fit('should have postAssociate(email) return data', () =>{
+  //   service.getAssociateId('associate@revature.com').subscribe(
+  //     response => {
+  //       expect(response.toString()).toEqual("5");
+  //     }
+  //   );
+  //   const req = httpMock.expectOne(`${environment.BASE_URL}associates`);
+  //   expect(req.request.method).toBe('GET');
+  //   req.flush("5");
+  // });
 });
