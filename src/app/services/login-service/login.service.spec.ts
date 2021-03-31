@@ -4,6 +4,7 @@ import { environment } from './../../../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing'
 import { TestBed } from '@angular/core/testing';
+import { Associate } from 'src/app/models/associate-model/associate.model';
 
 describe('LoginService', () => {
   let service: LoginService;
@@ -39,15 +40,16 @@ describe('LoginService', () => {
     expect(req.request.method).toBe('POST');
     req.flush("1");
   });
-
-  // fit('should have postAssociate(email) return data', () =>{
-  //   service.getAssociateId('associate@revature.com').subscribe(
-  //     response => {
-  //       expect(response.toString()).toEqual("5");
-  //     }
-  //   );
-  //   const req = httpMock.expectOne(`${environment.BASE_URL}associates`);
-  //   expect(req.request.method).toBe('GET');
-  //   req.flush("5");
-  // });
+  
+//associate
+  fit('should have postAssociate(email) return data', () =>{
+    service.getAssociate('associate@revature.com').subscribe(
+      response => {
+        expect(response.id.toString()).toEqual("5");
+      }
+    );
+    const req = httpMock.expectOne(`${environment.BASE_URL}associate`);
+    expect(req.request.method).toBe('POST');
+    req.flush("5");
+  });
 });

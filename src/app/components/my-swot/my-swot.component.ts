@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Associate } from 'src/app/models/associate-model/associate.model';
 
 @Component({
   selector: 'app-my-swot',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MySwotComponent implements OnInit {
 
-  constructor() { }
+  currentAssociate:Associate;
+
+  constructor()
+   {
+    this.currentAssociate = JSON.parse(sessionStorage.getItem('associate'))
+    console.log(this.currentAssociate);
+   }
 
   ngOnInit(): void {
   }
