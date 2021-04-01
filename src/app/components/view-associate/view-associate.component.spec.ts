@@ -73,7 +73,7 @@ describe('ViewAssociateComponent', () => {
     component.associates = [mockedAssociate];
     fixture.detectChanges();
     let updateBatchBttn = fixture.debugElement.query(By.css('.rev-btn')).nativeElement;
-    spyOn(component, 'updateBatch').withArgs();
+    spyOn(component, 'updateBatch').withArgs(1,1,1);
     updateBatchBttn.click();
     fixture.detectChanges();
     

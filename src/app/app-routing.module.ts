@@ -4,12 +4,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import {
   AngularFireAuthGuard,
+  canActivate,
   redirectUnauthorizedTo,
 } from '@angular/fire/auth-guard';
 import { HomeComponent } from './components/home/home.component';
 import { ViewSwotComponent } from './components/view-swot/view-swot.component';
 import { UpdateItemComponent } from './components/update-item/update-item.component';
 import { ViewFeedbackComponent } from './components/view-feedback/view-feedback.component';
+import { MySwotComponent } from './components/my-swot/my-swot.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
@@ -36,6 +38,14 @@ const routes: Routes = [
     component: SwotComponent,
     canActivate: [AngularFireAuthGuard],
     data: {
+      authGuardPipe: redirectUnauthorizedToLogin,
+    },
+  },
+  {
+    path: 'mySwot',
+    component: MySwotComponent,
+    canActivate:[AngularFireAuthGuard],
+    data:{
       authGuardPipe: redirectUnauthorizedToLogin,
     },
   },

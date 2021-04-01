@@ -26,8 +26,8 @@ import { ViewFeedbackComponent } from './components/view-feedback/view-feedback.
 import { AddFeedbackComponent } from './components/add-feedback/add-feedback.component';
 import { UpdateFeedbackComponent } from './components/update-feedback/update-feedback.component';
 import {HttpCancelInterceptor} from './services/interceptor/http-cancel.interceptor';
-import { ViewForAssociateComponent } from './view-for-associate/view-for-associate.component';
-
+import { ViewForAssociateComponent } from './components/view-for-associate/view-for-associate.component';
+import { MySwotComponent } from './components/my-swot/my-swot.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +47,7 @@ import { ViewForAssociateComponent } from './view-for-associate/view-for-associa
     AddFeedbackComponent,
     UpdateFeedbackComponent,
     ViewForAssociateComponent,
+    MySwotComponent
   ],
   imports: [
     BrowserModule,
