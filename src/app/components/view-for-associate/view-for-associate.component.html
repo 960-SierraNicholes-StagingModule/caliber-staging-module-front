@@ -1,1 +1,54 @@
-<p>view-for-associate works!</p>
+<div class="panel-heading">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Salesforce ID</th>
+          <th class="text-center" scope="col">Email</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Batch ID</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody id="associate-content">
+        <td>{{associate.id}}</td>
+        <td>{{associate.salesforceId}}</td>
+        <td>{{associate.email}}</td>
+        <td>{{associate.firstName}}</td>
+        <td>{{associate.lastName}}</td>
+        <td>{{associate.batch}}</td>
+        <td>{{associate.status}}</td>
+      </tbody>
+    </table>
+</div>
+<br>
+<br>
+<div>
+  <ng-container *ngIf="this.swotAnalyses!=null;else display">
+    <h2 style="text-align: center;color:black;">Swots</h2>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="associate-content">
+        <tr
+          *ngFor="let swot of swotAnalyses"
+          id="data-row"
+        >
+          <th>{{swot.description}}</th>
+          <td><button class="btn btn-primary rev-btn">View Swot</button></td>
+          <td><button class="btn btn-primary rev-btn">Report Progress</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <button class="btn btn-primary rev-btn">View Feedback</button>
+  </ng-container>
+  <ng-template #display>You don't have any SWOTs</ng-template>
+</div>
