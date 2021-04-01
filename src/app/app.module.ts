@@ -26,6 +26,7 @@ import { ViewFeedbackComponent } from './components/view-feedback/view-feedback.
 import { AddFeedbackComponent } from './components/add-feedback/add-feedback.component';
 import { UpdateFeedbackComponent } from './components/update-feedback/update-feedback.component';
 import {HttpCancelInterceptor} from './services/interceptor/http-cancel.interceptor';
+import { ViewFeedbackAssociateComponent } from './components/view-feedback-associate/view-feedback-associate.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import {HttpCancelInterceptor} from './services/interceptor/http-cancel.intercep
     ViewFeedbackComponent,
     AddFeedbackComponent,
     UpdateFeedbackComponent,
+    ViewFeedbackAssociateComponent,
   ],
   imports: [
     BrowserModule,
