@@ -29,6 +29,8 @@ import {HttpCancelInterceptor} from './services/interceptor/http-cancel.intercep
 import { ViewForAssociateComponent } from './components/view-for-associate/view-for-associate.component';
 import { MySwotComponent } from './components/my-swot/my-swot.component';
 import { AssociateNavBarComponent } from './components/associate-nav-bar/associate-nav-bar.component';
+import { ViewFeedbackAssociateComponent } from './components/view-feedback-associate/view-feedback-associate.component';
+
 
 @NgModule({
   declarations: [
@@ -49,7 +51,8 @@ import { AssociateNavBarComponent } from './components/associate-nav-bar/associa
     UpdateFeedbackComponent,
     ViewForAssociateComponent,
     MySwotComponent,
-    AssociateNavBarComponent
+    AssociateNavBarComponent,
+    ViewFeedbackAssociateComponent,
   ],
   imports: [
     BrowserModule,
