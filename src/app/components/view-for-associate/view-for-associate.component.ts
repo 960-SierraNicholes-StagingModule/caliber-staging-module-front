@@ -5,7 +5,6 @@ import { ToastRelayService } from 'src/app/services/toast-relay/toast-relay.serv
 import { Swot } from 'src/app/models/swot-model/swot';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Associate } from './../../models/associate-model/associate.model';
-import { SwotComponent } from './../swot/swot.component';
 import { AssociateService } from '../../services/associate/associate.service';
 
 @Component({
@@ -27,10 +26,7 @@ export class ViewForAssociateComponent implements OnInit {
   ngOnInit(): void {
     this.associate = JSON.parse(sessionStorage.getItem('associate'));
     console.log(this.associate);
-<<<<<<< HEAD
     console.log(this.swotAnalyses);
-=======
->>>>>>> 22723f5697c64e7e94ab70b6f1c4e1d24bc74d80
     this.pullSwotData();
   }
 
@@ -43,5 +39,9 @@ export class ViewForAssociateComponent implements OnInit {
       .subscribe((data: any) => {
         this.swotAnalyses = data;
       });
+  }
+
+  viewFeedback(){
+    this.router.navigate([`/feedback`]);
   }
 }

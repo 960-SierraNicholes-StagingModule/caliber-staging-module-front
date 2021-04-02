@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div
   id="display-box-info"
   class="row align-items-center justify-content-center"
@@ -14,40 +13,11 @@
       Status: {{associate.status}}
     </p>
   </div>
-=======
-<div class="panel-heading">
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Salesforce ID</th>
-          <th class="text-center" scope="col">Email</th>
-          <th scope="col">First Name</th>
-          <th scope="col">Last Name</th>
-          <th scope="col">Batch ID</th>
-          <th scope="col">Status</th>
-        </tr>
-      </thead>
-      <tbody id="associate-content">
-        <td>{{associate.id}}</td>
-        <td>{{associate.salesforceId}}</td>
-        <td>{{associate.email}}</td>
-        <td>{{associate.firstName}}</td>
-        <td>{{associate.lastName}}</td>
-        <td>{{associate.batch}}</td>
-        <td>{{associate.status}}</td>
-      </tbody>
-    </table>
->>>>>>> 22723f5697c64e7e94ab70b6f1c4e1d24bc74d80
 </div>
 <br>
 <br>
 <div>
-<<<<<<< HEAD
   <ng-container *ngIf="swotAnalyses.length!=0;else display">
-=======
-  <ng-container *ngIf="this.swotAnalyses!=null;else display">
->>>>>>> 22723f5697c64e7e94ab70b6f1c4e1d24bc74d80
     <h2 style="text-align: center;color:black;">Swots</h2>
     <table class="table table-striped table-hover">
       <thead>
@@ -70,13 +40,9 @@
     </table>
     <br>
     <br>
-    <button class="btn btn-primary rev-btn">View Feedback</button>
+    <button class="btn btn-primary rev-btn" (click)="viewFeedback()">View Feedback</button>
   </ng-container>
-<<<<<<< HEAD
   <ng-template #display>
     <p style="color:black;">You don't have any SWOTs</p>
   </ng-template>
-=======
-  <ng-template #display>You don't have any SWOTs</ng-template>
->>>>>>> 22723f5697c64e7e94ab70b6f1c4e1d24bc74d80
 </div>
