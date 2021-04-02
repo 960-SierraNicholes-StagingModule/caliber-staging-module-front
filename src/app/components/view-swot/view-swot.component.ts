@@ -21,6 +21,8 @@ export class ViewSwotComponent implements OnInit {
   type: string = '';
   activeSwotIndex: number;
 
+  pModalDisplay: string;
+
   constructor(
     private swotService: SwotService,
     private router: Router,
@@ -35,7 +37,6 @@ export class ViewSwotComponent implements OnInit {
   ngOnInit(): void {
     this.activeSwotIndex = 0;
     this.pullSwotData();
-    console.log(this.swotAnalyses, ': swot analysis');
   }
 
   /**
@@ -104,6 +105,7 @@ export class ViewSwotComponent implements OnInit {
     modalRef.componentInstance.name = 'AddItem';
     modalRef.componentInstance.parentSwot = this.currentSwotAnalysis;
     modalRef.componentInstance.type = this.type;
+    console.log(this.swotAnalyses, ': swot analysis');
   }
 
   /**
@@ -206,5 +208,8 @@ export class ViewSwotComponent implements OnInit {
 
   openLg(content) {
     this.modalService.open(content, { size: 'lg' });
+  }
+  setPModalDisplay(s: string) {
+    this.pModalDisplay = s;
   }
 }

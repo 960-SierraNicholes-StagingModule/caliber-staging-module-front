@@ -6,7 +6,7 @@
     </button>
   </div>
   <div class="modal-body" style="padding: 1rem;">
-    <p>Test&hellip;</p>
+    <p>{{ pModalDisplay }}</p>
   </div>
   <div class="modal-footer" style="padding: 1rem;">
     <button type="button" class="btn btn-light" (click)="modal.close('Close click')" style="padding: .5rem;">Close</button>
@@ -221,21 +221,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr (click)="openLg(content)">
-              <th scope="row">1</th>
-              <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, <br />sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br />
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <br /></td>
-              <td>04/01/2021</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>McCaulley</td>
-              <td>04/01/2021</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Ryan</td>
-              <td>04/01/2021</td>
+            <tr *ngFor="let p of swotAnalyses[0].progressReports; index as i;" (click)="openLg(content); setPModalDisplay(p.report);">
+              <th scope="row cursor">{{ i+1 }}</th>
+              <td class="cursor" *ngIf="p.report.length > 100; else elseBlockShow">{{p.report.substring(0,50)}}&hellip;</td>
+              <ng-template #elseBlockShow><td class="cursor">{{ p.report }}</td></ng-template>
+              <td class="cursor">{{ p.createdDate }}</td>
             </tr>
           </tbody>
         </table>
