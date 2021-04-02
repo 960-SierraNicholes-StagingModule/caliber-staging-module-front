@@ -15,6 +15,7 @@ import { AssociateService } from '../../services/associate/associate.service';
 export class ViewForAssociateComponent implements OnInit {
   swotAnalyses: Swot[] = [];
   associate: Associate;
+  selectedSwot: Swot;
   constructor(
     private associateService: AssociateService,
     private modalService: NgbModal,
@@ -24,10 +25,11 @@ export class ViewForAssociateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.selectedSwot = null;
     this.associate = JSON.parse(sessionStorage.getItem('associate'));
     console.log(this.associate);
-    console.log(this.swotAnalyses);
     this.pullSwotData();
+    console.log("the swot analyses items are: " + this.swotAnalyses);
   }
 
   /**
@@ -44,4 +46,15 @@ export class ViewForAssociateComponent implements OnInit {
   viewFeedback(){
     this.router.navigate([`/feedback`]);
   }
+
+  selectSwot(swot:Swot){
+    this.selectedSwot = swot;
+  }
+
+  deselectSwot(){
+    this.selectedSwot = null;
+  }
+ /* viewSwot(swot:Swot){
+    this.router.navigate([`/asscoiateSwot`]);
+  }*/
 }
