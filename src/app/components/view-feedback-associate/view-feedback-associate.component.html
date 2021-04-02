@@ -8,11 +8,9 @@
         <br>
         <span>Here are some helpful tips:</span>
         <br>
-        <p>Click on "Add New Feedback" to create new feedback.</p>
+        <p>see you Interview Feedback</p>
         <br>
-        <p>Click on "Update Feedback" to modify an already existing Feedback.</p>
-        <br>
-        <p>Click on "Delete Feedback" to remove an already existing Feedback.</p>
+        
     </nav>
     <app-toast-message></app-toast-message>
     <button class="btn btn-primary logout-btn" (click)="logOut()">
@@ -21,7 +19,7 @@
 </div>
 
 <div id="display-box-info" class="row align-items-center justify-content-center" *ngIf="feedbackArray">
-    <h5>Feedback for Associate {{associateId}}</h5>
+    <h5>Feedback for Associate {{userData.name}}</h5>
 </div>
 
 <section  class="Form my-4 mx-5 right row  justify-content-center">
@@ -32,8 +30,7 @@
                     <th>Manager ID</th>
                     <th>Created On</th>
                     <th>Feedback</th>
-                    <th>Update Feedback</th>
-                    <th>Delete Feedback</th>
+                    
                 </tr>
             </thead>
             <tbody>
