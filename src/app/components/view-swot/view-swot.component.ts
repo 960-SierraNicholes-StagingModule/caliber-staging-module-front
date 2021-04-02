@@ -184,22 +184,4 @@ export class ViewSwotComponent implements OnInit {
     const modalRef = this.modalService.open(UpdateSwotComponent);
     modalRef.componentInstance.parentSwot = this.currentSwotAnalysis;
   }
-
-  /**
-   * This method shows or hides a Confirm and Cancel button for Delete SWOT.
-   */
-  confirmDeleteVisibility: string = 'hidden';
-  toggleConfirmDelete() {
-    if (this.confirmDeleteVisibility == 'hidden')
-      this.confirmDeleteVisibility = 'visible';
-    else this.confirmDeleteVisibility = 'hidden';
-  }
-
-  /**
-   * This method sends a request to the backend to delete a swot with id=id.
-   */
-  deleteSwot() {
-    this.swotService.deleteSwot(this.currentSwotAnalysis.id).subscribe();
-    this.router.navigate(['/home']);
-  }
 }
