@@ -9,11 +9,19 @@ import { HttpCancelService } from 'src/app/services/http-cancel/http-cancel.serv
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+
+  manager:boolean = false;
+  
   constructor(
     private httpCancelService: HttpCancelService,
     private router: Router,
     private ngFireAuth: AngularFireAuth
-  ) {}
+  ) {
+    if(window.sessionStorage.getItem('managerId') != null){
+        this.manager = true;
+      }
+
+    }
 
   ngOnInit(): void {
     this.router.events.subscribe((event) => {

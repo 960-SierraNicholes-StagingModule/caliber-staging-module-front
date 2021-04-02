@@ -7,7 +7,12 @@
     />
     <h1 class="title">Welcome</h1>
     <div class="nav-components">
-      <app-nav-bar></app-nav-bar>
+      <ng-container *ngIf="manager==true;else display">
+        <app-nav-bar></app-nav-bar>
+      </ng-container>
+      <ng-template #display>
+        <app-associate-nav-bar></app-associate-nav-bar>
+      </ng-template>
       <app-toast-message></app-toast-message>
     </div>
     <button class="btn btn-primary logout-btn" (click)="logOut()">
@@ -16,5 +21,8 @@
   </div>
   <div id="showArea" class="table-contents">
     <app-view-associate></app-view-associate>
+  </div>
+  <div *ngIf="manager == false" id="showArea" class="float-left right">
+    <app-view-for-associate></app-view-for-associate>
   </div>
 </div>
