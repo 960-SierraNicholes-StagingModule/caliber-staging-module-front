@@ -27,17 +27,19 @@
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th>Manager ID</th>
+                   
                     <th>Created On</th>
                     <th>Feedback</th>
+                    <th>Manager Name</th>
                     
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let feedback of feedbackArray" id="data-row">
-                    <td>{{feedback.manager.id}}</td>
+                    
                     <td>{{feedback.date | date:'short':'EST'}}</td>
                     <td>{{feedback.content}}</td>
+                    <td>{{feedback.manager.name}}</td>
                     
 
                 </tr>
