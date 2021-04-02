@@ -4,10 +4,10 @@
     <div class="row no-gutters">
       <div class="col-lg-12 px-5 pt-5">
         <h1 class="font-weight-bold py-3">Add a progress report for this SWOT</h1>
-        <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="reportForm" (ngSubmit)="onSubmit()">
           <div class="form-row">
             <div class="col-lg-12">
-              <textarea class="form-control my-2 p-2" rows="10" cols="50" placeholder="Report on your progress on the SWOT goals set out for you by your manager" [formControlName]="'inputReport'" id="content" required>
+              <textarea class="form-control my-2 p-2" rows="10" cols="50" placeholder="Report on your progress on the SWOT goals set out for you by your manager" [formControlName]="'inputReport'" id="content" required ></textarea>
             </div>
           </div>
           <div class="form-row">
@@ -18,4 +18,4 @@
         </form>
       </div>
     </div>
-  </div> 
+</div> 
