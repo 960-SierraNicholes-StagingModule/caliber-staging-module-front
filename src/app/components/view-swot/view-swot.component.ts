@@ -35,6 +35,7 @@ export class ViewSwotComponent implements OnInit {
   ngOnInit(): void {
     this.activeSwotIndex = 0;
     this.pullSwotData();
+    console.log(this.swotAnalyses, ': swot analysis');
   }
 
   /**
@@ -201,5 +202,9 @@ export class ViewSwotComponent implements OnInit {
   deleteSwot() {
     this.swotService.deleteSwot(this.currentSwotAnalysis.id).subscribe();
     this.router.navigate(['/home']);
+  }
+
+  openLg(content) {
+    this.modalService.open(content, { size: 'lg' });
   }
 }

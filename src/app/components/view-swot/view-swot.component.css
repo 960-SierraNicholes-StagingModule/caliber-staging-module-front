@@ -213,12 +213,13 @@ section {
 
 .nav {
     background-color: var(--dark-gray);
-    height: 100vh;
-    width: 20%;
+    height: inherit;
+    width: 25%;
     -webkit-box-shadow: 4px 2px 5px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 4px 2px 5px 0px rgba(0, 0, 0, 0.75);
     box-shadow: 4px 2px 5px 0px rgba(0, 0, 0, 0.75);
     padding: 20px;
+    display: block;
 }
 
 .flex {
@@ -262,4 +263,27 @@ select {
 }
 .center-btn {
     margin: auto;
+}
+
+.flex .column {
+    flex-direction: column;
+}
+
+.spacing {
+    margin-right: 1rem;
+}
+
+.table .thead-dark th {
+    background-color: var(--orange);
+    border-color: var(--orange);
+}
+
+.swot-progress {
+    margin-bottom: 5rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .hide {
+        display: none;
+    }
 }
