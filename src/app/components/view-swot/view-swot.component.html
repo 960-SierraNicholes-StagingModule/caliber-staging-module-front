@@ -220,13 +220,14 @@
               <th scope="col">Date</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody *ngIf="swotAnalyses[0] != undefined">
             <tr *ngFor="let p of swotAnalyses[0].progressReports; index as i;" (click)="openLg(content); setPModalDisplay(p.report);">
               <th scope="row cursor">{{ i+1 }}</th>
               <td class="cursor" *ngIf="p.report.length > 100; else elseBlockShow">{{p.report.substring(0,50)}}&hellip;</td>
               <ng-template #elseBlockShow><td class="cursor">{{ p.report }}</td></ng-template>
               <td class="cursor">{{ p.createdDate }}</td>
             </tr>
+            <h3 class="no-reports" *ngIf="swotAnalyses[0].progressReports.length == 0">No progress reports</h3>
           </tbody>
         </table>
       </div>

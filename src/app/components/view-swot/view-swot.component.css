@@ -291,3 +291,7 @@ select {
 .cursor {
     cursor: pointer;
 }
+
+.no-reports {
+    font-weight: 700;
+}
