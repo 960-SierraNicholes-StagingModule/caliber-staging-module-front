@@ -34,17 +34,16 @@
   *ngIf="currentSwotAnalysis"
 >
   <h5>SWOT Analysis Info:</h5>
-
     <p >
       Associate: {{currentSwotAnalysis.associate.firstName}}
       {{currentSwotAnalysis.associate.lastName}}
     </p>
     <p >Manager ID: {{currentSwotAnalysis.manager.id}}</p>
     <p >
-      Created On: {{currentSwotAnalysis.createdOn | date:'short':'EST'}}
+      Created On: {{currentSwotAnalysis.createdOn | date:'short':'EDT'}}
     </p>
     <p >
-      Last Modified: {{currentSwotAnalysis.lastModified | date:'short':'EST'}}
+      Last Modified: {{currentSwotAnalysis.lastModified | date:'short':'EDT'}}
     </p>
   </div>
 
@@ -59,7 +58,7 @@
           [ngValue]="swotAnalysis"
         >
           {{swotAnalysis.description}} ({{swotAnalysis.createdOn |
-          date:'short':'EST'}})
+          date:'short':'EDT'}})
         </option>
       </ng-container>
     </select>

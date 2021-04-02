@@ -51,7 +51,7 @@ export class ViewFeedbackComponent implements OnInit {
   }
 
   /**
-   * This method requires implementation of deleteFeedback method in the 
+   * This method requires implementation of deleteFeedback method in the
    * feedback Service.
    * It deletes a feedback comment by its id.
    */
@@ -77,7 +77,7 @@ export class ViewFeedbackComponent implements OnInit {
     modalRef.componentInstance.updateEmitter.subscribe(this.pullFeedbackData.bind(this));
   }
 
-  
+
 
   // Opens Update as a modal page.
   openUpdatePage(feedback: Feedback) {
