@@ -215,3 +215,28 @@ section {
     color: #069;
     cursor: pointer;
 } 
+
+.logout-btn:focus{
+    border-color: var(--orange);
+    box-shadow: 0 0 0 0.2rem var(--brown);
+}
+
+.logout-btn {
+    padding: 10px 20px;
+    background-color: var(--orange);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    transition: 0.4s ease-in-out;
+    /* animation: fadeInUp;
+     referring directly to the animation's @keyframe declaration
+    animation-duration: 3s;
+    don't forget to set a duration! */
+    position: fixed;
+    bottom: 20px;
+}
+
+.logout-btn:hover {
+    background-color: var(--light-gray);
+    text-decoration: underline;
+}

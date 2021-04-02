@@ -45,27 +45,22 @@
         *ngIf="currentSwotAnalysis"
         >
           <h5>SWOT Analysis Info:</h5>
-          <div
-            *ngFor="let swotItem of currentSwotAnalysis.analysisItems; first as isFirst;"
-          >
-            <p *ngIf="isFirst">
+            <p>
               Associate: {{currentSwotAnalysis.associate.firstName}}
               {{currentSwotAnalysis.associate.lastName}}
             </p>
-            <p *ngIf="isFirst">Manager ID: {{currentSwotAnalysis.manager.id}}</p>
-            <p *ngIf="isFirst">
+            <p>Manager ID: {{currentSwotAnalysis.manager.id}}</p>
+            <p>
               Created On: {{currentSwotAnalysis.createdOn | date:'short':'EST'}}
             </p>
-            <p *ngIf="isFirst">
+            <p>
               Last Modified: {{currentSwotAnalysis.lastModified | date:'short':'EST'}}
             </p>
-          </div>
         </div>
         <div class="options">
           <select id="selectSwot" [(ngModel)]="currentSwotAnalysis">
             <ng-container *ngFor="let swotAnalysis of swotAnalyses.reverse()">
               <option
-                *ngIf="swotAnalysis.analysisItems.length > 0"
                 [ngValue]="swotAnalysis"
               >
                 {{swotAnalysis.description}} ({{swotAnalysis.createdOn |
@@ -79,7 +74,6 @@
           </button>
         </div>
       </div>
-
     </div>
 
       <table *ngIf="currentSwotAnalysis" id="swot-table">
@@ -220,13 +214,14 @@
               <th scope="col">Date</th>
             </tr>
           </thead>
-          <tbody>
-            <tr *ngFor="let p of swotAnalyses[0].progressReports; index as i;" (click)="openLg(content); setPModalDisplay(p.report);">
+          <tbody *ngIf="currentSwotAnalysis">
+            <tr *ngFor="let p of currentSwotAnalysis.progressReports; index as i;" (click)="openLg(content); setPModalDisplay(p.report);">
               <th scope="row cursor">{{ i+1 }}</th>
               <td class="cursor" *ngIf="p.report.length > 100; else elseBlockShow">{{p.report.substring(0,50)}}&hellip;</td>
               <ng-template #elseBlockShow><td class="cursor">{{ p.report }}</td></ng-template>
               <td class="cursor">{{ p.createdDate }}</td>
             </tr>
+            <h3 class="no-reports" *ngIf="currentSwotAnalysis.progressReports.length == 0">No progress reports</h3>
           </tbody>
         </table>
       </div>

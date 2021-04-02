@@ -8,6 +8,8 @@ import { ResourceLoader } from '@angular/compiler';
 import { AddFeedbackComponent } from 'src/app/components/add-feedback/add-feedback.component';
 import { ToastRelayService } from 'src/app/services/toast-relay/toast-relay.service';
 import { UpdateFeedbackComponent } from '../update-feedback/update-feedback.component';
+import { AngularFireAuth } from '@angular/fire/auth';
+
 
 @Component({
   selector: 'app-view-feedback',
@@ -28,7 +30,10 @@ export class ViewFeedbackComponent implements OnInit {
     private router: Router,
     private modalService: NgbModal,
     private route: ActivatedRoute,
-    private toastService: ToastRelayService) { }
+    private toastService: ToastRelayService,
+    private ngFireAuth: AngularFireAuth
+    ) { }
+
 
   ngOnInit(): void {
     this.pullFeedbackData();
@@ -81,5 +86,12 @@ export class ViewFeedbackComponent implements OnInit {
     modalRef.componentInstance.name = 'UpdateFeedback';
     modalRef.componentInstance.passedFeedback = feedback;
     modalRef.componentInstance.passedAssociateId = this.associateId;
+  }
+
+
+  logOut() {
+    this.ngFireAuth.signOut();
+    window.sessionStorage.clear();
+    this.router.navigate(['/login']);
   }
 }
