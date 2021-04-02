@@ -1,0 +1,11 @@
+#display-box-info{
+    background-color: var(--dark-gray);
+    border: 5px solid var(--orange);
+    width: 250px;
+    font-size:0.8rem;
+    border-radius: 20px;
+    margin: 10px auto;
+    padding: 10px;
+    color: var(--light-gray);
+
+}
