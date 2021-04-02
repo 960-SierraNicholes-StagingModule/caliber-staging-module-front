@@ -27,7 +27,10 @@ export class ViewForAssociateComponent implements OnInit {
   ngOnInit(): void {
     this.associate = JSON.parse(sessionStorage.getItem('associate'));
     console.log(this.associate);
+<<<<<<< HEAD
     console.log(this.swotAnalyses);
+=======
+>>>>>>> 22723f5697c64e7e94ab70b6f1c4e1d24bc74d80
     this.pullSwotData();
   }
 
