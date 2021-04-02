@@ -1,3 +1,18 @@
+<ng-template #content let-modal>
+  <div class="modal-header" style="padding: 1rem;">
+    <h4 class="modal-title">Progress Report</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" style="padding: 1rem;">
+    <p>Test&hellip;</p>
+  </div>
+  <div class="modal-footer" style="padding: 1rem;">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')" style="padding: .5rem;">Close</button>
+  </div>
+</ng-template>
+
 <div class="flex">
   <div class="nav">
     <a routerLink="/home">
@@ -8,22 +23,21 @@
       />
       <p id="homeLink">Return to Home</p>
     </a>
-    <span>Here are some helpful tips:</span>
-    <p>Click on the dropdown to select a particular SWOT analysis.</p>
-    <p>
-      Click on "Change SWOT Description" to modify the selected SWOT's
-      description.
-    </p>
-    <p>Click on the SWOT analysis items to update or delete them.</p>
-    <p>Click on "Delete SWOT" at the bottom to delete the SWOT as a whole</p>
+    <div class="flex column mt-5 hide">
+      <span class="options">Here are some helpful tips:</span>
+      <p style="margin-top: 3rem">Click on the dropdown to select a particular SWOT analysis.</p>
+      <p style="margin-top: 3rem">
+        Click on "Change SWOT Description" to modify the selected SWOT's
+        description.
+      </p>
+      <p style="margin-top: 3rem">Click on the SWOT analysis items to update or delete them.</p>
+      <p style="margin-top: 3rem">Click on "Delete SWOT" at the bottom to delete the SWOT as a whole</p>
+    </div>
     <app-toast-message></app-toast-message>
   </div>
   <div class="swot-content">
-    <section
-      class=""
-    >
+    <section class="">
     <div class="info-contain">
-
       <div class="swot-info-options">
         <div
         id="display-box-info"
@@ -175,26 +189,57 @@
           </td>
         </tr>
       </table>
-      <div class="flex">
+      <div class="flex column">
         <button class="btn toggle-btn center-btn" (click)="toggleConfirmDelete()">
           Delete SWOT</button><br />
+        <span class="options">
+          <button
+            class="btn toggle-btn spacing"
+            (click)="deleteSwot()"
+            [ngStyle]="{'visibility':confirmDeleteVisibility}"
+          >
+            Confirm
+          </button>
+          <button
+            class="btn toggle-btn"
+            (click)="toggleConfirmDelete()"
+            [ngStyle]="{'visibility':confirmDeleteVisibility}"
+          >
+            Cancel
+          </button>
+        </span>
       </div>
-      <span>
-        <button
-          class="btn toggle-btn"
-          (click)="deleteSwot()"
-          [ngStyle]="{'visibility':confirmDeleteVisibility}"
-        >
-          Confirm
-        </button>
-        <button
-          class="btn toggle-btn"
-          (click)="toggleConfirmDelete()"
-          [ngStyle]="{'visibility':confirmDeleteVisibility}"
-        >
-          Cancel
-        </button>
-      </span>
     </section>
+    <div class="swot-progress">
+      <div class="container options">
+        <table class="table table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Progress Reports</th>
+              <th scope="col">Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr (click)="openLg(content)">
+              <th scope="row">1</th>
+              <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, <br />sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br />
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <br /></td>
+              <td>04/01/2021</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>McCaulley</td>
+              <td>04/01/2021</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Ryan</td>
+              <td>04/01/2021</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>  
 </div>
