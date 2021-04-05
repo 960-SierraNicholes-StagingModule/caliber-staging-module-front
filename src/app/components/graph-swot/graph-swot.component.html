@@ -1,0 +1,20 @@
+<div class="main">
+    <div class="graph">
+        <canvas baseChart
+          [datasets]="chartData"
+          [options]="chartOptions"
+          [labels]="radarChartLabels"
+          [chartType]="radarChartType">
+        </canvas>
+      </div>
+      <div class="graph">
+        <canvas baseChart 
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [plugins]="barChartPlugins"
+            [legend]="barChartLegend"
+            [chartType]="barChartType">
+        </canvas>
+    </div>
+</div>
