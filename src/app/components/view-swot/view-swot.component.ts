@@ -21,6 +21,8 @@ export class ViewSwotComponent implements OnInit {
   type: string = '';
   activeSwotIndex: number;
 
+  pModalDisplay: string;
+
   constructor(
     private swotService: SwotService,
     private router: Router,
@@ -103,6 +105,7 @@ export class ViewSwotComponent implements OnInit {
     modalRef.componentInstance.name = 'AddItem';
     modalRef.componentInstance.parentSwot = this.currentSwotAnalysis;
     modalRef.componentInstance.type = this.type;
+    console.log(this.swotAnalyses, ': swot analysis');
   }
 
   /**
@@ -183,5 +186,30 @@ export class ViewSwotComponent implements OnInit {
   changeDescription() {
     const modalRef = this.modalService.open(UpdateSwotComponent);
     modalRef.componentInstance.parentSwot = this.currentSwotAnalysis;
+  }
+
+  /**
+   * This method shows or hides a Confirm and Cancel button for Delete SWOT.
+   */
+  confirmDeleteVisibility: string = 'hidden';
+  toggleConfirmDelete() {
+    if (this.confirmDeleteVisibility == 'hidden')
+      this.confirmDeleteVisibility = 'visible';
+    else this.confirmDeleteVisibility = 'hidden';
+  }
+
+  /**
+   * This method sends a request to the backend to delete a swot with id=id.
+   */
+  deleteSwot() {
+    // this.swotService.deleteSwot(this.currentSwotAnalysis.id).subscribe();
+    this.router.navigate(['/home']);
+  }
+
+  openLg(content) {
+    this.modalService.open(content, { size: 'lg' });
+  }
+  setPModalDisplay(s: string) {
+    this.pModalDisplay = s;
   }
 }

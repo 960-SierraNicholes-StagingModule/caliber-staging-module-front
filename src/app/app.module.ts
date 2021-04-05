@@ -26,6 +26,7 @@ import { ViewFeedbackComponent } from './components/view-feedback/view-feedback.
 import { AddFeedbackComponent } from './components/add-feedback/add-feedback.component';
 import { UpdateFeedbackComponent } from './components/update-feedback/update-feedback.component';
 import {HttpCancelInterceptor} from './services/interceptor/http-cancel.interceptor';
+import { AddSwotProgressComponent } from './components/add-swot-progress/add-swot-progress.component';
 import { ViewForAssociateComponent } from './components/view-for-associate/view-for-associate.component';
 import { MySwotComponent } from './components/my-swot/my-swot.component';
 import { AssociateNavBarComponent } from './components/associate-nav-bar/associate-nav-bar.component';
@@ -50,6 +51,7 @@ import { ViewSwotAssociateComponent } from './components/view-swot-associate/vie
     ViewFeedbackComponent,
     AddFeedbackComponent,
     UpdateFeedbackComponent,
+    AddSwotProgressComponent,
     ViewForAssociateComponent,
     MySwotComponent,
     AssociateNavBarComponent,

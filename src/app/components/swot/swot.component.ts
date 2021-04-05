@@ -7,6 +7,7 @@ import { SwotService } from 'src/app/services/swot/swot.service';
 import { Associate } from 'src/app/models/associate-model/associate.model';
 import { Manager } from 'src/app/models/manager-model/manager';
 import { ToastRelayService } from 'src/app/services/toast-relay/toast-relay.service';
+import { ProgressReport } from 'src/app/models/swot-model/progress-report';
 
 @Component({
   selector: 'app-swot',
@@ -29,6 +30,7 @@ export class SwotComponent implements OnInit {
   typeBorder: string = '1px solid';
 
   analysisItems: SwotItem[] = [];
+  progressReports: ProgressReport[] = [];
 
   constructor(
     private swotService: SwotService,
@@ -67,6 +69,7 @@ export class SwotComponent implements OnInit {
    if (this.isValidSwotForm()) {
       const newSwot: Swot = {
         analysisItems: this.analysisItems,
+        progressReports: this.progressReports,
         associate: new Associate(this.passedId),
         description: this.title,
         manager: new Manager(Number(sessionStorage.getItem('managerId'))),

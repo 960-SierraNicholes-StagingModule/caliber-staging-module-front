@@ -19,7 +19,6 @@
 }
 
 .title {
-    margin: 10px auto 80px auto ;
     font-size: 1.5rem;
     font-weight: 100;
     letter-spacing: 2px;
@@ -124,5 +123,50 @@
     .logout-btn{
         width: 100px;
         height: 40px;
+    }
+}
+
+.nav {
+    background-color: var(--dark-gray);
+    height: 100vh;
+    width: 20%;
+    -webkit-box-shadow: 4px 2px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 4px 2px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 4px 2px 5px 0px rgba(0, 0, 0, 0.75);
+    padding: 20px;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.table-contents {
+    height: 100vh;
+    width: 80%;
+    text-align: center;
+    padding: 50px;
+    overflow: auto;
+}
+
+@media only screen and (max-width: 768px) {
+    .flex {
+        flex-direction: column;
+    }
+    .nav {
+        height: 6rem;
+        width: 100%;
+    }
+    .logo {
+        width: 10rem;
+    }
+    .title {
+        bottom: auto;
+    }
+    .table-contents {
+        height: auto;
+        margin: 2rem auto;
+        width: 90%;
+        padding: 0;
     }
 }

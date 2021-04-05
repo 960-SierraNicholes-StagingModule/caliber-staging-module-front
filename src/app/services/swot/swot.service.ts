@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
 import { SwotItem } from 'src/app/models/swot-model/swot-item';
 import { environment } from 'src/environments/environment.prod';
+import { ProgressReport } from 'src/app/models/swot-model/progress-report';
 
 @Injectable({
   providedIn: 'root',
@@ -123,5 +124,15 @@ export class SwotService {
     return this.http
       .delete<any>(`${environment.BASE_URL}swot/item/delete/${swotItemId}`)
       .pipe(catchError(this.handleError<any>('deleteSwotItem')));
+  }
+
+  addProgressReport(progressReport: ProgressReport, swot: Swot): Observable<ProgressReport> {
+    return this.http
+      .post<ProgressReport>(
+        `${environment.BASE_URL}swot/swotprogressreport/new/${swot.id}`,
+        progressReport,
+        this.httpOptions
+      )
+      .pipe(catchError(this.handleError<ProgressReport>('addSwotProgressReport')));
   }
 }

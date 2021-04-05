@@ -1,161 +1,93 @@
-<div class="float-left left">
-  <a routerLink="/home">
-    <img
-      src="https://i.imgur.com/dYo5Z7w.png"
-      class="img-fluid logo"
-      alt="Revature Logo"
-    />
-    <p id="homeLink">Return to Home</p>
-  </a>
-  <nav class="nav flex-column navbar">
-    <br />
-    <br />
-    <span>Here are some helpful tips:</span>
-    <br />
-    <br />
-    <p>Click on the dropdown to select a particular SWOT analysis.</p>
-    <br />
-    <p>
-      Click on "Change SWOT Description" to modify the selected SWOT's
-      description.
-    </p>
-    <br />
-    <p>Click on the SWOT analysis items to update or delete them.</p>
-    <br />
-    <p>Click on "Delete SWOT" at the bottom to delete the SWOT as a whole</p>
-    <br />
-  </nav>
-  <app-toast-message></app-toast-message>
-</div>
-
-<div
-  id="display-box-info"
-  class="row align-items-center justify-content-center"
-  *ngIf="currentSwotAnalysis"
->
-  <h5>SWOT Analysis Info:</h5>
-
-    <p >
-      Associate: {{currentSwotAnalysis.associate.firstName}}
-      {{currentSwotAnalysis.associate.lastName}}
-    </p>
-    <p >Manager ID: {{currentSwotAnalysis.manager.id}}</p>
-    <p >
-      Created On: {{currentSwotAnalysis.createdOn | date:'short':'EST'}}
-    </p>
-    <p >
-      Last Modified: {{currentSwotAnalysis.lastModified | date:'short':'EST'}}
-    </p>
-  </div>
-
-
-<section
-  class="Form my-4 mx-5 right row align-items-center justify-content-center"
->
-  <div class="container">
-    <select id="selectSwot" [(ngModel)]="currentSwotAnalysis">
-      <ng-container *ngFor="let swotAnalysis of swotAnalyses.reverse()">
-        <option
-          [ngValue]="swotAnalysis"
-        >
-          {{swotAnalysis.description}} ({{swotAnalysis.createdOn |
-          date:'short':'EST'}})
-        </option>
-      </ng-container>
-    </select>
-    <br />
-    <button class="btn toggle-btn" (click)="changeDescription()">
-      Change SWOT Description
+<ng-template #content let-modal>
+  <div class="modal-header" style="padding: 1rem;">
+    <h4 class="modal-title">Progress Report</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
     </button>
+  </div>
+  <div class="modal-body" style="padding: 1rem;">
+    <p>{{ pModalDisplay }}</p>
+  </div>
+  <div class="modal-footer" style="padding: 1rem;">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')" style="padding: .5rem;">Close</button>
+  </div>
+</ng-template>
 
-    <table *ngIf="currentSwotAnalysis" id="swot-table">
-      <tr>
-        <td class="table-data">
-          <div class="card" style="width: 20rem">
-            <h5 class="card-title">Strength</h5>
-            <div class="card-body">
-              <div class="btn-group-vertical">
-                <ng-container
-                  *ngFor="let swotItem of currentSwotAnalysis.analysisItems"
-                >
-                  <button
-                    *ngIf="swotItem.type == 'STRENGTH'"
-                    class="btn toggle-btn"
-                    (click)="openUpdatePage(swotItem, currentSwotAnalysis.id)"
-                  >
-                    {{swotItem.name}}
-                  </button>
-                </ng-container>
-              </div>
-            </div>
-            <button
-              type="submit"
-              class="btn toggle-btn circle-btn"
-              (click)="addItemStrength()"
-            >
-              +
-            </button>
-          </div>
-        </td>
-        <td class="table-data">
-          <div class="card" style="width: 20rem">
-            <div class="card-body">
-              <h5 class="card-title">Weakness</h5>
-              <div class="btn-group-vertical">
-                <ng-container
-                  *ngFor="let swotItem of currentSwotAnalysis.analysisItems"
-                >
-                  <button
-                    *ngIf="swotItem.type == 'WEAKNESS'"
-                    class="btn toggle-btn"
-                    (click)="openUpdatePage(swotItem, currentSwotAnalysis.id)"
-                  >
-                    {{swotItem.name}}
-                  </button>
-                </ng-container>
-              </div>
-              <button class="btn toggle-btn circle-btn" (click)="addItemWeak()">
-                +
-              </button>
-            </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="table-data">
-          <div class="card" style="width: 20rem">
-            <div class="card-body">
-              <h5 class="card-title">Opportunity</h5>
-              <div class="btn-group-vertical">
-                <ng-container
-                  *ngFor="let swotItem of currentSwotAnalysis.analysisItems"
-                >
-                  <button
-                    *ngIf="swotItem.type == 'OPPORTUNITY'"
-                    class="btn toggle-btn"
-                    (click)="openUpdatePage(swotItem, currentSwotAnalysis.id)"
-                  >
-                    {{swotItem.name}}
-                  </button>
-                </ng-container>
-              </div>
-              <button class="btn toggle-btn circle-btn" (click)="addItemOpp()">
-                +
-              </button>
-            </div>
-          </div>
-        </td>
-        <td class="table-data">
-          <div class="col-sm-4 scroll">
+<div class="flex">
+  <div class="nav">
+    <a routerLink="/home">
+      <img
+        src="https://i.imgur.com/dYo5Z7w.png"
+        class="img-fluid logo"
+        alt="Revature Logo"
+      />
+      <p id="homeLink">Return to Home</p>
+    </a>
+    <div class="flex column mt-5 hide">
+      <span class="options">Here are some helpful tips:</span>
+      <p style="margin-top: 3rem">Click on the dropdown to select a particular SWOT analysis.</p>
+      <p style="margin-top: 3rem">
+        Click on "Change SWOT Description" to modify the selected SWOT's
+        description.
+      </p>
+      <p style="margin-top: 3rem">Click on the SWOT analysis items to update or delete them.</p>
+      <p style="margin-top: 3rem">Click on "Delete SWOT" at the bottom to delete the SWOT as a whole</p>
+    </div>
+    <app-toast-message></app-toast-message>
+  </div>
+  <div class="swot-content">
+    <section class="">
+    <div class="info-contain">
+      <div class="swot-info-options">
+        <div
+        id="display-box-info"
+        class=""
+        *ngIf="currentSwotAnalysis"
+        >
+          <h5>SWOT Analysis Info:</h5>
+            <p>
+              Associate: {{currentSwotAnalysis.associate.firstName}}
+              {{currentSwotAnalysis.associate.lastName}}
+            </p>
+            <p>Manager ID: {{currentSwotAnalysis.manager.id}}</p>
+            <p>
+              Created On: {{currentSwotAnalysis.createdOn | date:'short':'EST'}}
+            </p>
+            <p>
+              Last Modified: {{currentSwotAnalysis.lastModified | date:'short':'EST'}}
+            </p>
+        </div>
+        <div class="options">
+          <select id="selectSwot" [(ngModel)]="currentSwotAnalysis">
+            <ng-container *ngFor="let swotAnalysis of swotAnalyses.reverse()">
+              <option
+                [ngValue]="swotAnalysis"
+              >
+                {{swotAnalysis.description}} ({{swotAnalysis.createdOn |
+                date:'short':'EST'}})
+              </option>
+            </ng-container>
+          </select>
+          <br />
+          <button class="btn toggle-btn" (click)="changeDescription()">
+            Change SWOT Description
+          </button>
+        </div>
+      </div>
+    </div>
+
+      <table *ngIf="currentSwotAnalysis" id="swot-table">
+        <tr>
+          <td class="table-data">
             <div class="card" style="width: 20rem">
+              <h5 class="card-title">Strength</h5>
               <div class="card-body">
-                <h5 class="card-title">Threat</h5>
                 <div class="btn-group-vertical">
                   <ng-container
                     *ngFor="let swotItem of currentSwotAnalysis.analysisItems"
                   >
                     <button
-                      *ngIf="swotItem.type == 'THREAT'"
+                      *ngIf="swotItem.type == 'STRENGTH'"
                       class="btn toggle-btn"
                       (click)="openUpdatePage(swotItem, currentSwotAnalysis.id)"
                     >
@@ -163,17 +95,136 @@
                     </button>
                   </ng-container>
                 </div>
-                <button
-                  class="btn toggle-btn circle-btn"
-                  (click)="addItemThreat()"
-                >
+              </div>
+              <button
+                type="submit"
+                class="btn toggle-btn circle-btn"
+                (click)="addItemStrength()"
+              >
+                +
+              </button>
+            </div>
+          </td>
+          <td class="table-data">
+            <div class="card" style="width: 20rem">
+              <div class="card-body">
+                <h5 class="card-title">Weakness</h5>
+                <div class="btn-group-vertical">
+                  <ng-container
+                    *ngFor="let swotItem of currentSwotAnalysis.analysisItems"
+                  >
+                    <button
+                      *ngIf="swotItem.type == 'WEAKNESS'"
+                      class="btn toggle-btn"
+                      (click)="openUpdatePage(swotItem, currentSwotAnalysis.id)"
+                    >
+                      {{swotItem.name}}
+                    </button>
+                  </ng-container>
+                </div>
+                <button class="btn toggle-btn circle-btn" (click)="addItemWeak()">
                   +
                 </button>
               </div>
             </div>
-          </div>
-        </td>
-      </tr>
-    </table>
-  </div>
-</section>
+          </td>
+        </tr>
+        <tr>
+          <td class="table-data">
+            <div class="card" style="width: 20rem">
+              <div class="card-body">
+                <h5 class="card-title">Opportunity</h5>
+                <div class="btn-group-vertical">
+                  <ng-container
+                    *ngFor="let swotItem of currentSwotAnalysis.analysisItems"
+                  >
+                    <button
+                      *ngIf="swotItem.type == 'OPPORTUNITY'"
+                      class="btn toggle-btn"
+                      (click)="openUpdatePage(swotItem, currentSwotAnalysis.id)"
+                    >
+                      {{swotItem.name}}
+                    </button>
+                  </ng-container>
+                </div>
+                <button class="btn toggle-btn circle-btn" (click)="addItemOpp()">
+                  +
+                </button>
+              </div>
+            </div>
+          </td>
+          <td class="table-data">
+            <div class="col-sm-4 scroll">
+              <div class="card" style="width: 20rem">
+                <div class="card-body">
+                  <h5 class="card-title">Threat</h5>
+                  <div class="btn-group-vertical">
+                    <ng-container
+                      *ngFor="let swotItem of currentSwotAnalysis.analysisItems"
+                    >
+                      <button
+                        *ngIf="swotItem.type == 'THREAT'"
+                        class="btn toggle-btn"
+                        (click)="openUpdatePage(swotItem, currentSwotAnalysis.id)"
+                      >
+                        {{swotItem.name}}
+                      </button>
+                    </ng-container>
+                  </div>
+                  <button
+                    class="btn toggle-btn circle-btn"
+                    (click)="addItemThreat()"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <div class="flex column">
+        <button class="btn toggle-btn center-btn" (click)="toggleConfirmDelete()">
+          Delete SWOT</button><br />
+        <span class="options">
+          <button
+            class="btn toggle-btn spacing"
+            (click)="deleteSwot()"
+            [ngStyle]="{'visibility':confirmDeleteVisibility}"
+          >
+            Confirm
+          </button>
+          <button
+            class="btn toggle-btn"
+            (click)="toggleConfirmDelete()"
+            [ngStyle]="{'visibility':confirmDeleteVisibility}"
+          >
+            Cancel
+          </button>
+        </span>
+      </div>
+    </section>
+    <div class="swot-progress">
+      <div class="container options">
+        <table class="table table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Progress Reports</th>
+              <th scope="col">Date</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="currentSwotAnalysis">
+            <tr *ngFor="let p of currentSwotAnalysis.progressReports; index as i;" (click)="openLg(content); setPModalDisplay(p.report);">
+              <th scope="row cursor">{{ i+1 }}</th>
+              <td class="cursor" *ngIf="p.report.length > 100; else elseBlockShow">{{p.report.substring(0,50)}}&hellip;</td>
+              <ng-template #elseBlockShow><td class="cursor">{{ p.report }}</td></ng-template>
+              <td class="cursor">{{ p.createdDate }}</td>
+            </tr>
+            <h3 class="no-reports" *ngIf="currentSwotAnalysis.progressReports.length == 0">No progress reports</h3>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>  
+</div>
