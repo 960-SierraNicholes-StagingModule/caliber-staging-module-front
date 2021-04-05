@@ -5,7 +5,6 @@ import { ToastRelayService } from 'src/app/services/toast-relay/toast-relay.serv
 import { Swot } from 'src/app/models/swot-model/swot';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Associate } from './../../models/associate-model/associate.model';
-import { SwotComponent } from './../swot/swot.component';
 import { AssociateService } from '../../services/associate/associate.service';
 
 @Component({
@@ -16,6 +15,7 @@ import { AssociateService } from '../../services/associate/associate.service';
 export class ViewForAssociateComponent implements OnInit {
   swotAnalyses: Swot[] = [];
   associate: Associate;
+  selectedSwot: Swot;
   constructor(
     private associateService: AssociateService,
     private modalService: NgbModal,
@@ -25,9 +25,11 @@ export class ViewForAssociateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.selectedSwot = null;
     this.associate = JSON.parse(sessionStorage.getItem('associate'));
     console.log(this.associate);
     this.pullSwotData();
+    console.log("the swot analyses items are: " + this.swotAnalyses);
   }
 
   /**
@@ -40,4 +42,19 @@ export class ViewForAssociateComponent implements OnInit {
         this.swotAnalyses = data;
       });
   }
+
+  viewFeedback(){
+    this.router.navigate([`/feedback`]);
+  }
+
+  selectSwot(swot:Swot){
+    this.selectedSwot = swot;
+  }
+
+  deselectSwot(){
+    this.selectedSwot = null;
+  }
+ /* viewSwot(swot:Swot){
+    this.router.navigate([`/asscoiateSwot`]);
+  }*/
 }

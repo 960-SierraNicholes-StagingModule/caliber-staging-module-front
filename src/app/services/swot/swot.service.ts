@@ -55,6 +55,7 @@ export class SwotService {
       .pipe(catchError(this.handleError<Swot[]>('getAllSwots', [])));
   }
 
+
   /**
    * This method performs a post request that returns a swot based on a specified Id
    * @param id

@@ -1,0 +1,118 @@
+<div
+    id="display-box-info"
+    class="row align-items-center justify-content-center"
+    *ngIf="swot"
+  >
+    <h5>SWOT Analysis Info: </h5>
+  
+      <p >
+        Associate: {{swot.associate.firstName}}
+        {{swot.associate.lastName}}
+      </p>
+      <p >
+        Created On: {{swot.createdOn | date:'short':'EST'}}
+      </p>
+      <p >
+        Last Modified: {{swot.lastModified | date:'short':'EST'}}
+      </p>
+    
+  </div>
+  
+  <section
+    class="Form my-4 mx-5 right row align-items-center justify-content-center"
+    *ngIf="swot"
+  >
+    <div class="container">
+  
+      <table id="swot-table">
+        <tr>
+          <td class="table-data">
+            <div class="card" style="width: 20rem">
+              <h5 class="card-title">Strength</h5>
+              <div class="card-body">
+                <div class="btn-group-vertical">
+                  <ng-container
+                    *ngFor="let swotItem of swot.analysisItems"
+                  >
+                    <button
+                      *ngIf="swotItem.type == 'STRENGTH'"
+                      class="btn toggle-btn"
+                      
+                    >
+                      {{swotItem.name}}
+                    </button>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="table-data">
+            <div class="card" style="width: 20rem">
+              <div class="card-body">
+                <h5 class="card-title">Weakness</h5>
+                <div class="btn-group-vertical">
+                  <ng-container
+                    *ngFor="let swotItem of swot.analysisItems"
+                  >
+                    <button
+                      *ngIf="swotItem.type == 'WEAKNESS'"
+                      class="btn toggle-btn"
+              
+                    >
+                      {{swotItem.name}}
+                    </button>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="table-data">
+            <div class="card" style="width: 20rem">
+              <div class="card-body">
+                <h5 class="card-title">Opportunity</h5>
+                <div class="btn-group-vertical">
+                  <ng-container
+                    *ngFor="let swotItem of swot.analysisItems"
+                  >
+                    <button
+                      *ngIf="swotItem.type == 'OPPORTUNITY'"
+                      class="btn toggle-btn"
+                     
+                    >
+                      {{swotItem.name}}
+                    </button>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="table-data">
+            <div class="col-sm-4 scroll">
+              <div class="card" style="width: 20rem">
+                <div class="card-body">
+                  <h5 class="card-title">Threat</h5>
+                  <div class="btn-group-vertical">
+                    <ng-container
+                      *ngFor="let swotItem of swot.analysisItems"
+                    >
+
+                      <button
+                        *ngIf="swotItem.type == 'THREAT'"
+                        class="btn toggle-btn"
+                       
+                      >
+                        {{swotItem.name}}
+                      </button>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  
