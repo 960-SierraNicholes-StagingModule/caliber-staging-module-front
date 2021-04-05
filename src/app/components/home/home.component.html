@@ -19,7 +19,7 @@
       Log Out
     </button>
   </div>
-  <div id="showArea" class="table-contents">
+  <div *ngIf="manager == true" id="showArea" class="table-contents">
     <app-view-associate></app-view-associate>
   </div>
   <div *ngIf="manager == false" id="showArea" class="float-left right">
