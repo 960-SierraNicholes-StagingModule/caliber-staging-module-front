@@ -37,11 +37,9 @@ export class GraphDataService {
 
         averages.forEach((key, value) => {
             let sum = 0;
+            value.forEach(entry => sum += entry);
             
-            for (let i of value) {sum += i;}
-            let mean = sum / value.length;
-            
-            means.push([key, mean]);
+            means.push([key, sum / value.length]);
         });
 
         return means;
