@@ -21,7 +21,6 @@ export class ViewSwotAssociateComponent implements OnInit {
   associate: Associate;
 
   @Input()
-  //swot: Swot;
   pModalDisplay: string;
 
 
@@ -39,13 +38,8 @@ export class ViewSwotAssociateComponent implements OnInit {
    */
   ngOnInit(): void {
     this.swotId = +this.route.snapshot.paramMap.get('swotId')!.valueOf();
-    console.log("the swot id is: " + this.swotId);
     this.associate = JSON.parse(sessionStorage.getItem('associate'));
-    console.log("the associate is: " + this.associate.firstName);
-    //this.pullSwotData();
-    //console.log("the associate's swots are: " + this.swotAnalyses);
     this.getSwotById();
-    console.log("the selected swot is: " + this.swot);
   }
 
   openProgressReport() {
@@ -59,21 +53,6 @@ export class ViewSwotAssociateComponent implements OnInit {
   setPModalDisplay(s: string) {
     this.pModalDisplay = s;
   }
-
-   /**
-   * This method pulls the SWOT analysis data from the backend
-   */
-     /*pullSwotData() {
-      this.swotService
-        .getSwotByAssociatedId(this.associate.id)
-        .subscribe((data: any) => {
-          this.swotAnalyses = data;
-        });
-    }
-
-    getSwotById(){
-      this.swot = this.swotAnalyses.find(x => x.id == this.swotId);
-    }*/
 
     getSwotById(){
       this.swotService

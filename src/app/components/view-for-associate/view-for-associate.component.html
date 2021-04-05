@@ -1,5 +1,4 @@
 <div>
-  <ng-container *ngIf="selectedSwot==null;else swotSelected">
 <div
   id="display-box-info"
   class="row align-items-center justify-content-center"
@@ -35,21 +34,15 @@
           id="data-row"
         >
           <th>{{swot.description}}</th>
-          <td><button class="btn btn-primary rev-btn" (click)="selectSwot(swot)" routerLink="/viewAssociateSwot/{{swot.id}}">View Swot</button></td>
+          <td><button class="btn btn-primary rev-btn" routerLink="/viewAssociateSwot/{{swot.id}}">View Swot</button></td>
         </tr>
       </tbody>
     </table>
     <br>
     <br>
-    <button class="btn btn-primary rev-btn" (click)="viewFeedback()">View Feedback</button>
   </ng-container>
   <ng-template #zeroSwots>
     <p style="color:black;">You don't have any SWOTs</p>
-    <button class="btn btn-primary rev-btn" (click)="viewFeedback()">View Feedback</button>
   </ng-template>
-</ng-container>
+<button class="btn btn-primary rev-btn" (click)="viewFeedback()">View Feedback</button>
 </div>
-<ng-template #swotSelected>
-  <app-view-swot-associate [swot] = "selectedSwot" ></app-view-swot-associate>
-  <button class="btn btn-primary rev-btn" (click)="deselectSwot()">Go Back to Main</button>
-</ng-template>
