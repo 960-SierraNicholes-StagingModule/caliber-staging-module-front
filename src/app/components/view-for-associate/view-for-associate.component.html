@@ -35,7 +35,7 @@
           id="data-row"
         >
           <th>{{swot.description}}</th>
-          <td><button class="btn btn-primary rev-btn" (click)="selectSwot(swot)">View Swot</button></td>
+          <td><button class="btn btn-primary rev-btn" (click)="selectSwot(swot)" routerLink="/viewAssociateSwot/{{swot.id}}">View Swot</button></td>
         </tr>
       </tbody>
     </table>

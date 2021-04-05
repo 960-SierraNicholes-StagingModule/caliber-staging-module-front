@@ -13,6 +13,7 @@ import { UpdateItemComponent } from './components/update-item/update-item.compon
 import { ViewFeedbackComponent } from './components/view-feedback/view-feedback.component';
 import { MySwotComponent } from './components/my-swot/my-swot.component';
 import { ViewFeedbackAssociateComponent } from './components/view-feedback-associate/view-feedback-associate.component';
+import { ViewSwotAssociateComponent } from './components/view-swot-associate/view-swot-associate.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
@@ -85,6 +86,14 @@ const routes: Routes = [
   {
     path: 'feedback',
     component: ViewFeedbackAssociateComponent,
+    canActivate: [AngularFireAuthGuard],
+    data: {
+      authGuardPipe: redirectUnauthorizedToLogin,
+    },
+  },
+  {
+    path: 'viewAssociateSwot/:swotId',
+    component: ViewSwotAssociateComponent,
     canActivate: [AngularFireAuthGuard],
     data: {
       authGuardPipe: redirectUnauthorizedToLogin,

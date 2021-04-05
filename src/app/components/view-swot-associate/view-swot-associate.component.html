@@ -13,33 +13,51 @@
   </div>
 </ng-template>
 
-<div
-    id="display-box-info"
-    class="row align-items-center justify-content-center"
-    *ngIf="swot"
-  >
-    <h5>SWOT Analysis Info: </h5>
-  
-      <p >
-        Associate: {{swot.associate.firstName}}
-        {{swot.associate.lastName}}
-      </p>
-      <p >
-        Created On: {{swot.createdOn | date:'short':'EST'}}
-      </p>
-      <p >
-        Last Modified: {{swot.lastModified | date:'short':'EST'}}
-      </p>
-    
+
+<div class = "flex">
+  <div class = "nav">
+    <a routerLink="/home">
+      <img
+        src="https://i.imgur.com/dYo5Z7w.png"
+        class="img-fluid logo"
+        alt="Revature Logo"
+      />
+      <p id="homeLink">Return to Home</p>
+    </a>
+    <div class="flex column mt-5 hide">
+      <span class="options">Here are some helpful tips:</span>
+      <p style="margin-top: 3rem">Click on "Report Progress" to report on your progress for meeting your SWOT goals.</p>
+    </div>
+    <app-toast-message></app-toast-message>
+    <button class="btn btn-primary logout-btn" (click)="logOut()">
+      Log Out
+    </button>
   </div>
-<div class="swot-content">
-  <section
-    class="Form my-4 mx-5 right row align-items-center justify-content-center"
-    *ngIf="swot"
-  >
-    <div class="container">
-  
-      <table id="swot-table">
+  <div class="swot-content">
+    <section class="">
+    <div class="info-contain">
+      <div class="swot-info-options">
+        <div
+        id="display-box-info"
+        class=""
+        *ngIf="swot"
+        >
+        <h5>SWOT Analysis Info: </h5>
+          <p>
+            Associate: {{swot.associate.firstName}}
+            {{swot.associate.lastName}}
+          </p>
+          <p >
+            Created On: {{swot.createdOn | date:'short':'EST'}}
+          </p>
+          <p >
+            Last Modified: {{swot.lastModified | date:'short':'EST'}}
+          </p>
+        </div>
+      </div>
+    </div> 
+
+      <table *ngIf="swot" id="swot-table">
         <tr>
           <td class="table-data">
             <div class="card" style="width: 20rem">
@@ -128,11 +146,11 @@
           </td>
         </tr>
       </table>
-    </div>
-  </section>
+    </section>
+  
 
   <div class="container">
-    <button class="btn btn-primary rev-btn" style="padding:10px;" (click)="openProgressReport()">Report Progress</button>
+    <button class="btn btn-primary rev-btn" style="padding:10px;display:block;margin-left:auto;margin-right:auto;" (click)="openProgressReport()">Report Progress</button>
   </div>
   <br><br>
   <div class="swot-progress">
@@ -156,5 +174,6 @@
         </tbody>
       </table>
     </div>
+  </div>
   </div>
 </div>

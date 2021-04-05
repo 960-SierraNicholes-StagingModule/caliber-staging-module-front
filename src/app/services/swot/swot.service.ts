@@ -55,6 +55,16 @@ export class SwotService {
       .pipe(catchError(this.handleError<Swot[]>('getAllSwots', [])));
   }
 
+    /**
+   * This method performs a get request that a swot based on a swot Id
+   * @param id
+   */
+     getSwotBySwotId(id: number): Observable<Swot> {
+      return this.http
+        .get<Swot>(`${environment.BASE_URL}swot/viewSwot/${id}`)
+        .pipe(catchError(this.handleError<Swot>('getSwotById', )));
+    }
+
 
   /**
    * This method performs a post request that returns a swot based on a specified Id
