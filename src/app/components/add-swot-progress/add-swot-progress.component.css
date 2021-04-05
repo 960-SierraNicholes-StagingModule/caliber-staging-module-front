@@ -19,3 +19,20 @@
   .toggle-btn:hover {
     background-color: var(--light-gray);
   }
+
+  .btn1{
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 100%;
+    background-color: var(--yellow);
+    color: var(--white);
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.btn1:hover{
+    background: var(--white);
+    border: 1px solid;
+    color: var(--black);
+}
