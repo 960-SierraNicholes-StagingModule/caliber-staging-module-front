@@ -17,8 +17,8 @@ ul {
     border-radius: 30px;
 }
 
-.swot-content {
-    width: 100%;
+.nav > * {
+  margin-bottom: 10px;
 }
 
 .btn1{
@@ -89,7 +89,9 @@ ul {
     font-size: 1.2rem;
 }
 
-
+.nav, .title {
+    color: var(--light-gray);
+}
 #display-box-info{
     background-color: var(--dark-gray);
     border: 5px solid var(--orange);
@@ -208,6 +210,67 @@ section {
     cursor: pointer;
 }
 
+
+.nav {
+    background-color: var(--dark-gray);
+    height: inherit;
+    width: 25%;
+    -webkit-box-shadow: 4px 2px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 4px 2px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 4px 2px 5px 0px rgba(0, 0, 0, 0.75);
+    padding: 20px;
+    display: block;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+}
+
+@media only screen and (max-width: 768px) {
+    .flex {
+        flex-direction: column;
+    }
+    .nav {
+        height: 6rem;
+        width: 100%;
+    }
+    .logo {
+        width: 10rem;
+    }
+    .title {
+        bottom: auto;
+    }
+}
+
+.swot-content {
+    width: 100%;
+}
+
+.swot-info-options {
+    display: flex;
+    margin: auto;
+    width: 40rem;
+}
+
+.options {
+    margin: auto;
+}
+select {
+    max-width: 14.5rem;
+}
+.center-btn {
+    margin: auto;
+}
+
+.flex .column {
+    flex-direction: column;
+}
+
+.spacing {
+    margin-right: 1rem;
+}
+
 .table .thead-dark th {
     background-color: var(--orange);
     border-color: var(--orange);
@@ -215,6 +278,7 @@ section {
 
 .swot-progress {
     margin-bottom: 5rem;
+    align-content: center;
 }
 
 @media only screen and (max-width: 768px) {
@@ -229,4 +293,29 @@ section {
 
 .no-reports {
     font-weight: 700;
+}
+
+.logout-btn:focus{
+    border-color: var(--orange);
+    box-shadow: 0 0 0 0.2rem var(--brown);
+}
+
+.logout-btn {
+    padding: 10px 20px;
+    background-color: var(--orange);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    transition: 0.4s ease-in-out;
+    /* animation: fadeInUp;
+     referring directly to the animation's @keyframe declaration
+    animation-duration: 3s;
+    don't forget to set a duration! */
+    position: fixed;
+    bottom: 20px;
+}
+
+.logout-btn:hover {
+    background-color: var(--light-gray);
+    text-decoration: underline;
 }

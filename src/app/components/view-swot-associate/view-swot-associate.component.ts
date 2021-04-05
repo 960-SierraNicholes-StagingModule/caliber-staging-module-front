@@ -6,6 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Swot } from 'src/app/models/swot-model/swot';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastRelayService } from 'src/app/services/toast-relay/toast-relay.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { AddSwotProgressComponent } from '../add-swot-progress/add-swot-progress.component';
 
 @Component({
@@ -15,9 +16,11 @@ import { AddSwotProgressComponent } from '../add-swot-progress/add-swot-progress
 })
 export class ViewSwotAssociateComponent implements OnInit {
   swotId: number;
+  swot: Swot;
+  swotAnalyses: Swot[] = [];
+  associate: Associate;
 
   @Input()
-  swot: Swot;
   pModalDisplay: string;
 
 
@@ -27,13 +30,16 @@ export class ViewSwotAssociateComponent implements OnInit {
     private modalService: NgbModal,
     private route: ActivatedRoute,
     private toastService: ToastRelayService,
+    private ngFireAuth: AngularFireAuth, public afAuth: AngularFireAuth
   ) {}
 
   /**
    * This requests all the data on a SWOT analysis from the backend on initialization
    */
   ngOnInit(): void {
-    
+    this.swotId = +this.route.snapshot.paramMap.get('swotId')!.valueOf();
+    this.associate = JSON.parse(sessionStorage.getItem('associate'));
+    this.getSwotById();
   }
 
   openProgressReport() {
@@ -48,4 +54,19 @@ export class ViewSwotAssociateComponent implements OnInit {
     this.pModalDisplay = s;
   }
 
+    getSwotById(){
+      this.swotService
+        .getSwotBySwotId(this.swotId)
+        .subscribe((data: any) => {
+          this.swot = data;
+        });
+    }
+
+
+    logOut() {
+      this.ngFireAuth.signOut();
+      window.sessionStorage.clear();
+      this.router.navigate(['/login']);
+      
+    }
 }
