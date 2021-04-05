@@ -13,7 +13,6 @@ import { ToastRelayService } from 'src/app/services/toast-relay/toast-relay.serv
   styleUrls: ['./view-swot-associate.component.css'],
 })
 export class ViewSwotAssociateComponent implements OnInit {
-  swotAnalyses: Swot[] = [];
   swotId: number;
 
   @Input()

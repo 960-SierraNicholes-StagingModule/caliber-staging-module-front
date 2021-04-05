@@ -123,19 +123,6 @@ section {
     margin: 0px !important;
 }
 
-
-/* Added animation CSS code STARTS here -AK */
-.navbar{
-    /* animation: fadeInLeft;
-    animation-duration: 2.5s; */
-}
-
-#data-row{
-    /* animation: flipInX;
-    animation-duration: 3s; */
-}
-/* Added animation ENDS here -AK */
-
 .toggle-btn:focus{
     border-color: #f26926;
     box-shadow: 0 0 0 0.2rem rgba(243, 156, 113, .40);

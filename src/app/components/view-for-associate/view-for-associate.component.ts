@@ -54,7 +54,4 @@ export class ViewForAssociateComponent implements OnInit {
   deselectSwot(){
     this.selectedSwot = null;
   }
- /* viewSwot(swot:Swot){
-    this.router.navigate([`/asscoiateSwot`]);
-  }*/
 }

@@ -19,7 +19,7 @@
 </div>
 
 <div id="display-box-info" class="row align-items-center justify-content-center" *ngIf="feedbackArray">
-    <h5>Feedback for Associate {{userData.name}}</h5>
+    <h5>Feedback for Associate {{associate.name}}</h5>
 </div>
 
 <section  class="Form my-4 mx-5 right row  justify-content-center">
@@ -39,9 +39,8 @@
                     
                     <td>{{feedback.date | date:'short':'EST'}}</td>
                     <td>{{feedback.content}}</td>
-                    <td>{{feedback.manager.name}}</td>
+                    <td>{{feedback.manager.firstName}} {{feedback.manager.lastName}}</td>
                     
-
                 </tr>
             </tbody>
         </table>
