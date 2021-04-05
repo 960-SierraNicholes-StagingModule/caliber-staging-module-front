@@ -6,6 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Swot } from 'src/app/models/swot-model/swot';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastRelayService } from 'src/app/services/toast-relay/toast-relay.service';
+import { AddSwotProgressComponent } from '../add-swot-progress/add-swot-progress.component';
 
 @Component({
   selector: 'app-view-swot-associate',
@@ -17,6 +18,7 @@ export class ViewSwotAssociateComponent implements OnInit {
 
   @Input()
   swot: Swot;
+  pModalDisplay: string;
 
 
   constructor(
@@ -34,5 +36,16 @@ export class ViewSwotAssociateComponent implements OnInit {
     
   }
 
+  openProgressReport() {
+    const modalRef = this.modalService.open(AddSwotProgressComponent);
+    modalRef.componentInstance.swot = this.swot;
+  }
+
+  openLg(content) {
+    this.modalService.open(content, { size: 'lg' });
+  }
+  setPModalDisplay(s: string) {
+    this.pModalDisplay = s;
+  }
 
 }

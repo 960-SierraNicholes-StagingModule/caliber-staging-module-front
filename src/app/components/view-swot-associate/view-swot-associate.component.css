@@ -17,6 +17,9 @@ ul {
     border-radius: 30px;
 }
 
+.swot-content {
+    width: 100%;
+}
 
 .btn1{
     border: none;
@@ -203,4 +206,27 @@ section {
     /*input has OS specific font-family*/
     color: var(--blue);
     cursor: pointer;
+}
+
+.table .thead-dark th {
+    background-color: var(--orange);
+    border-color: var(--orange);
+}
+
+.swot-progress {
+    margin-bottom: 5rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .hide {
+        display: none;
+    }
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.no-reports {
+    font-weight: 700;
 }

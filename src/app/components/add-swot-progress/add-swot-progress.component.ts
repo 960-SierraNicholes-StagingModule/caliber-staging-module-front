@@ -28,7 +28,7 @@ export class AddSwotProgressComponent implements OnInit {
   onSubmit() {
     this.progressReport = new ProgressReport;
     this.progressReport.report = this.reportForm.get('inputReport')?.value;
-    this.progressReport.timestamp = new Date();
+    this.progressReport.createdDate = new Date();
     this.swot.progressReports.push(this.progressReport);
     this.swotService.addProgressReport(this.progressReport, this.swot).subscribe((data: any) => {
     });

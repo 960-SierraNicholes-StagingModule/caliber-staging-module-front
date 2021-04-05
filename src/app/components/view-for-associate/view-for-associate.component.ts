@@ -16,6 +16,8 @@ export class ViewForAssociateComponent implements OnInit {
   swotAnalyses: Swot[] = [];
   associate: Associate;
   selectedSwot: Swot;
+  viewSwot: boolean;
+  progressReport: boolean;
   constructor(
     private associateService: AssociateService,
     private modalService: NgbModal,
@@ -27,9 +29,7 @@ export class ViewForAssociateComponent implements OnInit {
   ngOnInit(): void {
     this.selectedSwot = null;
     this.associate = JSON.parse(sessionStorage.getItem('associate'));
-    console.log(this.associate);
     this.pullSwotData();
-    console.log("the swot analyses items are: " + this.swotAnalyses);
   }
 
   /**

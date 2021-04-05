@@ -1,3 +1,18 @@
+<ng-template #content let-modal>
+  <div class="modal-header" style="padding: 1rem;">
+    <h4 class="modal-title">Progress Report</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" style="padding: 1rem;">
+    <p>{{ pModalDisplay }}</p>
+  </div>
+  <div class="modal-footer" style="padding: 1rem;">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')" style="padding: .5rem;">Close</button>
+  </div>
+</ng-template>
+
 <div
     id="display-box-info"
     class="row align-items-center justify-content-center"
@@ -17,7 +32,7 @@
       </p>
     
   </div>
-  
+<div class="swot-content">
   <section
     class="Form my-4 mx-5 right row align-items-center justify-content-center"
     *ngIf="swot"
@@ -115,4 +130,31 @@
       </table>
     </div>
   </section>
-  
+
+  <div class="container">
+    <button class="btn btn-primary rev-btn" style="padding:10px;" (click)="openProgressReport()">Report Progress</button>
+  </div>
+  <br><br>
+  <div class="swot-progress">
+    <div class="container options">
+      <table class="table table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Progress Reports</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="swot">
+          <tr *ngFor="let p of swot.progressReports; index as i;" (click)="openLg(content); setPModalDisplay(p.report);">
+            <th scope="row cursor">{{ i+1 }}</th>
+            <td class="cursor" *ngIf="p.report.length > 100; else elseBlockShow">{{p.report.substring(0,50)}}&hellip;</td>
+            <ng-template #elseBlockShow><td class="cursor">{{ p.report }}</td></ng-template>
+            <td class="cursor">{{ p.createdDate }}</td>
+          </tr>
+          <h3 class="no-reports" *ngIf="swot.progressReports.length == 0">No progress reports</h3>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
