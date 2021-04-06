@@ -1,0 +1,38 @@
+.toggle-btn {
+    padding: 10px 20px;
+    background-color: var(--orange);
+    color: var(--white);
+    
+    border: none;
+    transition: 0.4s ease-in-out;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  
+    box-shadow: 0 1px 3px black;
+  }
+  
+  .toggle-btn:focus{
+    border-color: var(--orange);
+    box-shadow: 0 0 0 0.2rem var(--brown);
+  }
+  
+  .toggle-btn:hover {
+    background-color: var(--light-gray);
+  }
+
+  .btn1{
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 100%;
+    background-color: var(--yellow);
+    color: var(--white);
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.btn1:hover{
+    background: var(--white);
+    border: 1px solid;
+    color: var(--black);
+}
