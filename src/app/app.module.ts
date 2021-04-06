@@ -19,6 +19,7 @@ import { UpdateAssociateComponent } from './components/update-associate/update-a
 import { UpdateSwotComponent } from './components/update-swot/update-swot.component';
 import { ToastMessageComponent } from './components/toast-message/toast-message.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ChartsModule } from 'ng2-charts';
 
 import { JwtInterceptor } from './services/interceptor/jwt.interceptor';
 
@@ -34,6 +35,7 @@ import { ViewFeedbackAssociateComponent } from './components/view-feedback-assoc
 import { ViewSwotAssociateComponent } from './components/view-swot-associate/view-swot-associate.component';
 import { ViewItemComponent } from './components/view-item/view-item.component';
 import { ViewProgressReportComponent } from './components/view-progress-report/view-progress-report.component';
+import { GraphSwotComponent } from './components/graph-swot/graph-swot.component';
 
 
 @NgModule({
@@ -61,6 +63,7 @@ import { ViewProgressReportComponent } from './components/view-progress-report/v
     ViewSwotAssociateComponent,
     ViewItemComponent,
     ViewProgressReportComponent,
+    GraphSwotComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,6 +74,7 @@ import { ViewProgressReportComponent } from './components/view-progress-report/v
     AngularFireModule.initializeApp(environment.firebase),
     BrowserAnimationsModule,
     NgbModule,
+    ChartsModule,
   ],
   providers: [
     {
