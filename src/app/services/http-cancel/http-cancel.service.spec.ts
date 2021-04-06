@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { HttpCancelServiceService } from './http-cancel-service.service';
+import { HttpCancelService } from './http-cancel.service';
 
 describe('HttpCancelServiceService', () => {
-  let service: HttpCancelServiceService;
+  let service: HttpCancelService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(HttpCancelServiceService);
+    service = TestBed.inject(HttpCancelService);
   });
 
   it('should be created', () => {

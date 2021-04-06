@@ -7,6 +7,7 @@ import { SwotService } from 'src/app/services/swot/swot.service';
 import { Associate } from 'src/app/models/associate-model/associate.model';
 import { Manager } from 'src/app/models/manager-model/manager';
 import { ToastRelayService } from 'src/app/services/toast-relay/toast-relay.service';
+import { ProgressReport } from 'src/app/models/swot-model/progress-report';
 
 @Component({
   selector: 'app-swot',
@@ -29,6 +30,7 @@ export class SwotComponent implements OnInit {
   typeBorder: string = '1px solid';
 
   analysisItems: SwotItem[] = [];
+  progressReports: ProgressReport[] = [];
 
   constructor(
     private swotService: SwotService,
@@ -44,30 +46,10 @@ export class SwotComponent implements OnInit {
    * @param signInForm this is the form with the swot item information
    */
   onSubmit() {
-    if (this.isValidSwotForm()) {
-      let item: SwotItem = {
-        id: 0,
-        name: this.name,
-        type: this.type,
-        note: this.note,
-        swotAnalysisId: this.passedId,
-      };
-      this.message = this.updateMessage();
-      this.analysisItems.push(item);
-      this.hasData = true;
-    } else {
-      this.updateStyles();
-      this.message = this.updateMessage();
-    }
+
   }
 
   private updateStyles(): void {
-    this.name
-      ? (this.nameBorder = '1px solid')
-      : (this.nameBorder = '3px solid red');
-    this.type
-      ? (this.typeBorder = '1px solid')
-      : (this.typeBorder = '3px solid red');
     this.title
       ? (this.titleBorder = '1px solid')
       : (this.titleBorder = '3px solid red');
@@ -75,37 +57,19 @@ export class SwotComponent implements OnInit {
 
   private updateMessage() {
     if (!this.title) return 'Please enter SWOT title.';
-    if (!this.name) return 'Please enter SWOT item name.';
-    if (!this.type) return 'Please select a SWOT type.';
     return '';
   }
 
-  private isValidSwotForm(): boolean {
-    const validName: boolean = this.name.length != 0;
-    const validType: boolean = this.type.length != 0;
-    return validName && validType;
+    private isValidSwotForm(): boolean {
+      const validTitle: boolean = this.title.length != 0;
+      return validTitle;
   }
 
-  /**
-   * This deletes the item from the item array in the user's view on delete click(FILTER METHOD)
-   * @param item this is the item to be deleteed
-   */
-  delete(item: SwotItem): void {
-    this.analysisItems = this.analysisItems.filter(
-      (swotItem) => swotItem !== item
-    );
-    this.analysisItems ? (this.hasData = true) : (this.hasData = false);
-  }
-
-  /**
-   * This checks to see if the description is blank, if blank shows a message to enter the description
-   * If not blank then it calls the swotService addSwot method to update the Swot in the database.
-   * It then closes the modal.
-   */
   addSwot(): void {
-    if (this.isValidSwotForm()) {
+   if (this.isValidSwotForm()) {
       const newSwot: Swot = {
         analysisItems: this.analysisItems,
+        progressReports: this.progressReports,
         associate: new Associate(this.passedId),
         description: this.title,
         manager: new Manager(Number(sessionStorage.getItem('managerId'))),
@@ -119,6 +83,9 @@ export class SwotComponent implements OnInit {
         });
         this.modalService.close();
       });
+    } else {
+          this.updateStyles();
+          this.message = this.updateMessage();
     }
   }
 }

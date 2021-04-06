@@ -17,3 +17,9 @@
 .nav-link:hover{
     color: var(--light-gray);
 }
+
+@media only screen and (max-width: 768px) {
+    .hide {
+        display: none;
+    }
+}

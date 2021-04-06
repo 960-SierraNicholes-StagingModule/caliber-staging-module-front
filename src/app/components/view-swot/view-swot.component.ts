@@ -8,6 +8,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AddItemComponent } from '../add-item/add-item.component';
 import { UpdateSwotComponent } from '../update-swot/update-swot.component';
 import { ToastRelayService } from 'src/app/services/toast-relay/toast-relay.service';
+import { ProgressReport } from 'src/app/models/swot-model/progress-report';
+import { ViewProgressReportComponent } from '../view-progress-report/view-progress-report.component';
+import { GraphDataService } from 'src/app/services/graph-data/graph-data.service';
 
 @Component({
   selector: 'app-view-swot',
@@ -21,12 +24,15 @@ export class ViewSwotComponent implements OnInit {
   type: string = '';
   activeSwotIndex: number;
 
+  pModalDisplay: string;
+
   constructor(
     private swotService: SwotService,
     private router: Router,
     private modalService: NgbModal,
     private route: ActivatedRoute,
     private toastService: ToastRelayService,
+    private graphDataServ: GraphDataService
   ) {}
 
   /**
@@ -103,6 +109,7 @@ export class ViewSwotComponent implements OnInit {
     modalRef.componentInstance.name = 'AddItem';
     modalRef.componentInstance.parentSwot = this.currentSwotAnalysis;
     modalRef.componentInstance.type = this.type;
+    console.log(this.swotAnalyses, ': swot analysis');
   }
 
   /**
@@ -186,20 +193,14 @@ export class ViewSwotComponent implements OnInit {
   }
 
   /**
-   * This method shows or hides a Confirm and Cancel button for Delete SWOT.
-   */
-  confirmDeleteVisibility: string = 'hidden';
-  toggleConfirmDelete() {
-    if (this.confirmDeleteVisibility == 'hidden')
-      this.confirmDeleteVisibility = 'visible';
-    else this.confirmDeleteVisibility = 'hidden';
-  }
-
-  /**
    * This method sends a request to the backend to delete a swot with id=id.
    */
   deleteSwot() {
-    this.swotService.deleteSwot(this.currentSwotAnalysis.id).subscribe();
     this.router.navigate(['/home']);
+  }
+
+  openProgressReportView(report: ProgressReport) {
+    const modalRef = this.modalService.open(ViewProgressReportComponent);
+    modalRef.componentInstance.p = report;
   }
 }

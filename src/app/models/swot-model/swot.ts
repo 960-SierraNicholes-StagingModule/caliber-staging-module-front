@@ -1,6 +1,7 @@
 import { Associate } from './../associate-model/associate.model';
 import { SwotItem } from './swot-item';
 import { Manager } from '../manager-model/manager';
+import { ProgressReport } from './progress-report';
 
 export class Swot {
   id?: number;
@@ -11,6 +12,7 @@ export class Swot {
   description: string;
 
   analysisItems: SwotItem[];
+  progressReports: ProgressReport[];
 
   constructor() {
     this.createdOn = new Date();

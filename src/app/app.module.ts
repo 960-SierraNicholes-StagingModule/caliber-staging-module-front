@@ -19,6 +19,7 @@ import { UpdateAssociateComponent } from './components/update-associate/update-a
 import { UpdateSwotComponent } from './components/update-swot/update-swot.component';
 import { ToastMessageComponent } from './components/toast-message/toast-message.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ChartsModule } from 'ng2-charts';
 
 import { JwtInterceptor } from './services/interceptor/jwt.interceptor';
 
@@ -26,6 +27,15 @@ import { ViewFeedbackComponent } from './components/view-feedback/view-feedback.
 import { AddFeedbackComponent } from './components/add-feedback/add-feedback.component';
 import { UpdateFeedbackComponent } from './components/update-feedback/update-feedback.component';
 import {HttpCancelInterceptor} from './services/interceptor/http-cancel.interceptor';
+import { AddSwotProgressComponent } from './components/add-swot-progress/add-swot-progress.component';
+import { ViewForAssociateComponent } from './components/view-for-associate/view-for-associate.component';
+import { MySwotComponent } from './components/my-swot/my-swot.component';
+import { AssociateNavBarComponent } from './components/associate-nav-bar/associate-nav-bar.component';
+import { ViewFeedbackAssociateComponent } from './components/view-feedback-associate/view-feedback-associate.component';
+import { ViewSwotAssociateComponent } from './components/view-swot-associate/view-swot-associate.component';
+import { ViewItemComponent } from './components/view-item/view-item.component';
+import { ViewProgressReportComponent } from './components/view-progress-report/view-progress-report.component';
+import { GraphSwotComponent } from './components/graph-swot/graph-swot.component';
 
 
 @NgModule({
@@ -45,6 +55,15 @@ import {HttpCancelInterceptor} from './services/interceptor/http-cancel.intercep
     ViewFeedbackComponent,
     AddFeedbackComponent,
     UpdateFeedbackComponent,
+    AddSwotProgressComponent,
+    ViewForAssociateComponent,
+    MySwotComponent,
+    AssociateNavBarComponent,
+    ViewFeedbackAssociateComponent,
+    ViewSwotAssociateComponent,
+    ViewItemComponent,
+    ViewProgressReportComponent,
+    GraphSwotComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +74,7 @@ import {HttpCancelInterceptor} from './services/interceptor/http-cancel.intercep
     AngularFireModule.initializeApp(environment.firebase),
     BrowserAnimationsModule,
     NgbModule,
+    ChartsModule,
   ],
   providers: [
     {

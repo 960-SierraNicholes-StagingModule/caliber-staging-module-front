@@ -1,0 +1,9 @@
+.main {
+    display: flex;
+    margin-bottom: 3rem;
+}
+
+.graph {
+    display: block;
+    width: 50%;
+}

@@ -1,0 +1,48 @@
+<div>
+<div
+  id="display-box-info"
+  class="row align-items-center justify-content-center"
+>
+  <div>
+    <p>
+      {{associate.firstName}} {{associate.lastName}}
+    </p>
+    <p>
+      {{associate.email}}
+    </p>
+    <p>
+      Status: {{associate.status}}
+    </p>
+  </div>
+</div>
+<br>
+<br>
+
+  <ng-container *ngIf="swotAnalyses.length!=0;else zeroSwots">
+    <h2 style="text-align: center;color:black;">Swots</h2>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="associate-content">
+        <tr
+          *ngFor="let swot of swotAnalyses"
+          id="data-row"
+        >
+          <th>{{swot.description}}</th>
+          <td><button class="btn toggle-btn" routerLink="/viewAssociateSwot/{{swot.id}}">View Swot</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+  </ng-container>
+  <ng-template #zeroSwots>
+    <p style="color:black;">You don't have any SWOTs</p>
+  </ng-template>
+<button class="btn toggle-btn" (click)="viewFeedback()">View Feedback</button>
+</div>

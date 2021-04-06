@@ -162,7 +162,6 @@ describe('SwotComponent', () => {
     let addSwotSpy = spyOn(swotService, 'addSwot').and.callThrough();
     component.name = "something";
     component.type = "STRENGTH";
-    component.description = "something";
     let addItemButton = fixture.debugElement.query(By.css('#add-item')).nativeElement;
     addItemButton.click();
     fixture.detectChanges();

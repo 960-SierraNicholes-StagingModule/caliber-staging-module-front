@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
 import { SwotItem } from 'src/app/models/swot-model/swot-item';
 import { environment } from 'src/environments/environment.prod';
+import { ProgressReport } from 'src/app/models/swot-model/progress-report';
 
 @Injectable({
   providedIn: 'root',
@@ -33,16 +34,6 @@ export class SwotService {
   }
 
   /**
-   * This forms an http request intended to delete a swot.
-   * @param swotId - the id of the swot to be deleted
-   */
-  deleteSwot(swotId: number): Observable<any> {
-    return this.http.delete<any>(
-      `${environment.BASE_URL}swot/delete/${swotId}`
-    );
-  }
-
-  /**
    * This method handles any errors that occur during the other methods in this class.
    * @param operation
    * @param result
@@ -63,6 +54,17 @@ export class SwotService {
       .get<Swot[]>(`${environment.BASE_URL}swot/view/${id}`)
       .pipe(catchError(this.handleError<Swot[]>('getAllSwots', [])));
   }
+
+    /**
+   * This method performs a get request that a swot based on a swot Id
+   * @param id
+   */
+     getSwotBySwotId(id: number): Observable<Swot> {
+      return this.http
+        .get<Swot>(`${environment.BASE_URL}swot/viewSwot/${id}`)
+        .pipe(catchError(this.handleError<Swot>('getSwotById', )));
+    }
+
 
   /**
    * This method performs a post request that returns a swot based on a specified Id
@@ -128,9 +130,19 @@ export class SwotService {
    * This method make a delete request to delete a swot item based on Id
    * @param swotItemId
    */
-  deleteItem(swotItemId: number): Observable<any> {
+   deleteItem(swotItemId: number): Observable<any> {
     return this.http
       .delete<any>(`${environment.BASE_URL}swot/item/delete/${swotItemId}`)
       .pipe(catchError(this.handleError<any>('deleteSwotItem')));
+  }
+
+  addProgressReport(progressReport: ProgressReport, swot: Swot): Observable<ProgressReport> {
+    return this.http
+      .post<ProgressReport>(
+        `${environment.BASE_URL}swot/swotprogressreport/new/${swot.id}`,
+        progressReport,
+        this.httpOptions
+      )
+      .pipe(catchError(this.handleError<ProgressReport>('addSwotProgressReport')));
   }
 }
