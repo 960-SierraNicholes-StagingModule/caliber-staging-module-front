@@ -196,7 +196,6 @@ export class ViewSwotComponent implements OnInit {
    * This method sends a request to the backend to delete a swot with id=id.
    */
   deleteSwot() {
-    // this.swotService.deleteSwot(this.currentSwotAnalysis.id).subscribe();
     this.router.navigate(['/home']);
   }
 
