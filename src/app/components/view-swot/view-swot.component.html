@@ -201,7 +201,7 @@
               <th scope="row cursor">{{ i+1 }}</th>
               <td class="cursor" *ngIf="p.report.length > 100; else elseBlockShow">{{p.report.substring(0,50)}}&hellip;</td>
               <ng-template #elseBlockShow><td class="cursor">{{ p.report }}</td></ng-template>
-              <td class="cursor">{{ p.createdDate }}</td>
+              <td class="cursor">{{ p.createdDate | date: 'MMM d, y, h:mm:ss a' }}</td>
             </tr>
             <h3 class="no-reports" *ngIf="currentSwotAnalysis.progressReports.length == 0">No progress reports</h3>
           </tbody>
