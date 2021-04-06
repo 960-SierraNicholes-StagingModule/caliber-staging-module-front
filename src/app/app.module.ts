@@ -19,6 +19,7 @@ import { UpdateAssociateComponent } from './components/update-associate/update-a
 import { UpdateSwotComponent } from './components/update-swot/update-swot.component';
 import { ToastMessageComponent } from './components/toast-message/toast-message.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ChartsModule } from 'ng2-charts';
 
 import { JwtInterceptor } from './services/interceptor/jwt.interceptor';
 
@@ -31,6 +32,7 @@ import { ViewForAssociateComponent } from './components/view-for-associate/view-
 import { MySwotComponent } from './components/my-swot/my-swot.component';
 import { AssociateNavBarComponent } from './components/associate-nav-bar/associate-nav-bar.component';
 import { ViewFeedbackAssociateComponent } from './components/view-feedback-associate/view-feedback-associate.component';
+import { GraphSwotComponent } from './components/graph-swot/graph-swot.component';
 
 
 @NgModule({
@@ -55,6 +57,7 @@ import { ViewFeedbackAssociateComponent } from './components/view-feedback-assoc
     MySwotComponent,
     AssociateNavBarComponent,
     ViewFeedbackAssociateComponent,
+    GraphSwotComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +68,7 @@ import { ViewFeedbackAssociateComponent } from './components/view-feedback-assoc
     AngularFireModule.initializeApp(environment.firebase),
     BrowserAnimationsModule,
     NgbModule,
+    ChartsModule,
   ],
   providers: [
     {
