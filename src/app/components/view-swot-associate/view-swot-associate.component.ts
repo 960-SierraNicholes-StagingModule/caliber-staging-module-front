@@ -8,6 +8,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ToastRelayService } from 'src/app/services/toast-relay/toast-relay.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AddSwotProgressComponent } from '../add-swot-progress/add-swot-progress.component';
+import { ViewItemComponent } from '../view-item/view-item.component';
+import { ProgressReport } from 'src/app/models/swot-model/progress-report';
+import { ViewProgressReportComponent } from '../view-progress-report/view-progress-report.component';
 
 @Component({
   selector: 'app-view-swot-associate',
@@ -45,28 +48,32 @@ export class ViewSwotAssociateComponent implements OnInit {
   openProgressReport() {
     const modalRef = this.modalService.open(AddSwotProgressComponent);
     modalRef.componentInstance.swot = this.swot;
+    console.log(typeof this.swot.progressReports[0].createdDate);
   }
 
-  openLg(content) {
-    this.modalService.open(content, { size: 'lg' });
+  getSwotById(){
+    this.swotService
+      .getSwotBySwotId(this.swotId)
+      .subscribe((data: any) => {
+        this.swot = data;
+      });
   }
-  setPModalDisplay(s: string) {
-    this.pModalDisplay = s;
+
+
+  logOut() {
+    this.ngFireAuth.signOut();
+    window.sessionStorage.clear();
+    this.router.navigate(['/login']);
+    
   }
 
-    getSwotById(){
-      this.swotService
-        .getSwotBySwotId(this.swotId)
-        .subscribe((data: any) => {
-          this.swot = data;
-        });
-    }
+  openItemView(inputItem: SwotItem) {
+    const modalRef = this.modalService.open(ViewItemComponent);
+    modalRef.componentInstance.inItem = inputItem;
+  }
 
-
-    logOut() {
-      this.ngFireAuth.signOut();
-      window.sessionStorage.clear();
-      this.router.navigate(['/login']);
-      
-    }
+  openProgressReportView(report: ProgressReport) {
+    const modalRef = this.modalService.open(ViewProgressReportComponent);
+    modalRef.componentInstance.p = report;
+  }
 }

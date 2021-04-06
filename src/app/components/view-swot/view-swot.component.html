@@ -31,7 +31,6 @@
         description.
       </p>
       <p style="margin-top: 3rem">Click on the SWOT analysis items to update or delete them.</p>
-      <p style="margin-top: 3rem">Click on "Delete SWOT" at the bottom to delete the SWOT as a whole</p>
     </div>
     <app-toast-message></app-toast-message>
   </div>
@@ -183,24 +182,6 @@
           </td>
         </tr>
       </table>
-      <div class="flex column">
-        <span class="options">
-          <button
-            class="btn toggle-btn spacing"
-            (click)="deleteSwot()"
-            [ngStyle]="{'visibility':confirmDeleteVisibility}"
-          >
-            Confirm
-          </button>
-          <button
-            class="btn toggle-btn"
-            (click)="toggleConfirmDelete()"
-            [ngStyle]="{'visibility':confirmDeleteVisibility}"
-          >
-            Cancel
-          </button>
-        </span>
-      </div>
     </section>
     <div class="swot-progress">
       <div class="container options">
@@ -213,7 +194,7 @@
             </tr>
           </thead>
           <tbody *ngIf="currentSwotAnalysis">
-            <tr *ngFor="let p of currentSwotAnalysis.progressReports; index as i;" (click)="openLg(content); setPModalDisplay(p.report);">
+            <tr *ngFor="let p of currentSwotAnalysis.progressReports; index as i;" (click)="openProgressReportView(p)">
               <th scope="row cursor">{{ i+1 }}</th>
               <td class="cursor" *ngIf="p.report.length > 100; else elseBlockShow">{{p.report.substring(0,50)}}&hellip;</td>
               <ng-template #elseBlockShow><td class="cursor">{{ p.report }}</td></ng-template>

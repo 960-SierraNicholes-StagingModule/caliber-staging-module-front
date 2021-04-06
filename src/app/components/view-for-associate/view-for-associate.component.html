@@ -34,7 +34,7 @@
           id="data-row"
         >
           <th>{{swot.description}}</th>
-          <td><button class="btn btn-primary rev-btn" routerLink="/viewAssociateSwot/{{swot.id}}">View Swot</button></td>
+          <td><button class="btn toggle-btn" routerLink="/viewAssociateSwot/{{swot.id}}">View Swot</button></td>
         </tr>
       </tbody>
     </table>
@@ -44,5 +44,5 @@
   <ng-template #zeroSwots>
     <p style="color:black;">You don't have any SWOTs</p>
   </ng-template>
-<button class="btn btn-primary rev-btn" (click)="viewFeedback()">View Feedback</button>
+<button class="btn toggle-btn" (click)="viewFeedback()">View Feedback</button>
 </div>

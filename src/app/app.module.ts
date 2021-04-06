@@ -32,6 +32,8 @@ import { MySwotComponent } from './components/my-swot/my-swot.component';
 import { AssociateNavBarComponent } from './components/associate-nav-bar/associate-nav-bar.component';
 import { ViewFeedbackAssociateComponent } from './components/view-feedback-associate/view-feedback-associate.component';
 import { ViewSwotAssociateComponent } from './components/view-swot-associate/view-swot-associate.component';
+import { ViewItemComponent } from './components/view-item/view-item.component';
+import { ViewProgressReportComponent } from './components/view-progress-report/view-progress-report.component';
 
 
 @NgModule({
@@ -57,6 +59,8 @@ import { ViewSwotAssociateComponent } from './components/view-swot-associate/vie
     AssociateNavBarComponent,
     ViewFeedbackAssociateComponent,
     ViewSwotAssociateComponent,
+    ViewItemComponent,
+    ViewProgressReportComponent,
   ],
   imports: [
     BrowserModule,

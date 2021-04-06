@@ -319,3 +319,8 @@ select {
     background-color: var(--light-gray);
     text-decoration: underline;
 }
+
+.toast-msg {
+    position: fixed;
+    bottom: 20px;
+}

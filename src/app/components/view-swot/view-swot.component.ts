@@ -8,6 +8,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AddItemComponent } from '../add-item/add-item.component';
 import { UpdateSwotComponent } from '../update-swot/update-swot.component';
 import { ToastRelayService } from 'src/app/services/toast-relay/toast-relay.service';
+import { ProgressReport } from 'src/app/models/swot-model/progress-report';
+import { ViewProgressReportComponent } from '../view-progress-report/view-progress-report.component';
 
 @Component({
   selector: 'app-view-swot',
@@ -189,16 +191,6 @@ export class ViewSwotComponent implements OnInit {
   }
 
   /**
-   * This method shows or hides a Confirm and Cancel button for Delete SWOT.
-   */
-  confirmDeleteVisibility: string = 'hidden';
-  toggleConfirmDelete() {
-    if (this.confirmDeleteVisibility == 'hidden')
-      this.confirmDeleteVisibility = 'visible';
-    else this.confirmDeleteVisibility = 'hidden';
-  }
-
-  /**
    * This method sends a request to the backend to delete a swot with id=id.
    */
   deleteSwot() {
@@ -206,10 +198,8 @@ export class ViewSwotComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
-  openLg(content) {
-    this.modalService.open(content, { size: 'lg' });
-  }
-  setPModalDisplay(s: string) {
-    this.pModalDisplay = s;
+  openProgressReportView(report: ProgressReport) {
+    const modalRef = this.modalService.open(ViewProgressReportComponent);
+    modalRef.componentInstance.p = report;
   }
 }
