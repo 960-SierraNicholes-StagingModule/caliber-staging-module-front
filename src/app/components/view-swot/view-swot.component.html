@@ -183,8 +183,8 @@
         </tr>
       </table>
     </section>
-    <div class="container" style="margin: auto">
-      <app-graph-swot></app-graph-swot>
+    <div class="container" style="margin: auto" *ngIf="currentSwotAnalysis.associate">
+      <app-graph-swot [associate]="currentSwotAnalysis.associate"></app-graph-swot>
     </div>
     <div class="swot-progress">
       <div class="container options">

@@ -10,7 +10,6 @@ import { UpdateSwotComponent } from '../update-swot/update-swot.component';
 import { ToastRelayService } from 'src/app/services/toast-relay/toast-relay.service';
 import { ProgressReport } from 'src/app/models/swot-model/progress-report';
 import { ViewProgressReportComponent } from '../view-progress-report/view-progress-report.component';
-import { GraphDataService } from 'src/app/services/graph-data/graph-data.service';
 
 @Component({
   selector: 'app-view-swot',
@@ -31,8 +30,7 @@ export class ViewSwotComponent implements OnInit {
     private router: Router,
     private modalService: NgbModal,
     private route: ActivatedRoute,
-    private toastService: ToastRelayService,
-    private graphDataServ: GraphDataService
+    private toastService: ToastRelayService
   ) {}
 
   /**

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType, RadialChartOptions } from 'chart.js';
 import { Label } from 'ng2-charts';
 import { GraphDataService } from 'src/app/services/graph-data/graph-data.service';
@@ -9,6 +9,10 @@ import { GraphDataService } from 'src/app/services/graph-data/graph-data.service
   styleUrls: ['./graph-swot.component.css']
 })
 export class GraphSwotComponent implements OnInit {
+
+  @Input() associate;
+
+  public noUser: boolean = false;
   // Radar or spider graph.
   public chartOptions: RadialChartOptions = {
     responsive: true,
@@ -44,7 +48,7 @@ export class GraphSwotComponent implements OnInit {
   constructor(private graphDataServ: GraphDataService) { }
 
   ngOnInit(): void {
-    this.graphDataServ.getSpiderDataByBatchAndAssociate('TR-1201','mock4.associatecdad37b2-449a-48e1-92dc-c1887a281d8b@mock.com').subscribe(
+    this.graphDataServ.getSpiderDataByBatchAndAssociate('TR-1201',this.associate.email).subscribe(
       res => {
         //push 7 elements into array.
         for(let i = 0; i < 7; i++) {
@@ -59,9 +63,12 @@ export class GraphSwotComponent implements OnInit {
           { data: this.spiderData, label: 'Associate', backgroundColor: 'rgba(144, 238, 144, .5)', borderColor: 'rgba(78, 186, 126, 255)', pointBackgroundColor: 'rgba(78, 186, 126,255)' },
           { data: this.averageData, label: 'J2EE', backgroundColor: 'rgba(184, 209, 224, .5)', borderColor: 'rgba(114, 164, 194,255)', pointBackgroundColor: 'rgba(114, 164, 194,255)'},
         ]
+      },
+      err => {
+        this.noUser = true;
       }
     )
-    this.graphDataServ.getBarDataByAssociate('mock4.associatecdad37b2-449a-48e1-92dc-c1887a281d8b@mock.com').subscribe(
+    this.graphDataServ.getBarDataByAssociate(this.associate.email).subscribe(
       res => {
         //push values we need into array for graph.
         this.associateBarData.push(res.traineeGrades.Presentation);
@@ -77,6 +84,9 @@ export class GraphSwotComponent implements OnInit {
           { data: [75, 75, 75, 75], label: 'Benchmark', type: 'line', backgroundColor: ['rgba(0,0,0,0)'], borderColor: ['rgba(0,255,0,255)'], borderWidth: 3, pointBackgroundColor: 'rgba(0,0,0,0)', pointBorderColor: 'rgba(0,0,0,0)', pointRadius: 0, hoverRadius: 0 },
           { data: [70, 70, 70, 70], label: 'Passing', type: 'line', backgroundColor: ['rgba(0,0,0,0)'], borderColor: ['rgba(255,0,0,255)'], borderWidth: 3, pointBackgroundColor: 'rgba(0,0,0,0)', pointBorderColor: 'rgba(0,0,0,0)', pointRadius: 0, hoverRadius: 0},
         ];
+      },
+      err => {
+        this.noUser = true;
       }
     )
   }
