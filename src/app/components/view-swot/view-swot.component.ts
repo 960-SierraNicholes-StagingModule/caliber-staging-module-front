@@ -8,7 +8,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AddItemComponent } from '../add-item/add-item.component';
 import { UpdateSwotComponent } from '../update-swot/update-swot.component';
 import { ToastRelayService } from 'src/app/services/toast-relay/toast-relay.service';
-import { GraphDataService } from 'src/app/services/graph-data/graph-data.service';
 
 @Component({
   selector: 'app-view-swot',
@@ -29,8 +28,7 @@ export class ViewSwotComponent implements OnInit {
     private router: Router,
     private modalService: NgbModal,
     private route: ActivatedRoute,
-    private toastService: ToastRelayService,
-    private graphDataServ: GraphDataService
+    private toastService: ToastRelayService
   ) {}
 
   /**
