@@ -1,4 +1,4 @@
-<div class="main">
+<div class="main" *ngIf="!noUser">
     <div class="graph">
         <canvas baseChart
           [datasets]="chartData"

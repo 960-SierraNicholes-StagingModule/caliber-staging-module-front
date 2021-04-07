@@ -9,6 +9,7 @@ import { AddFeedbackComponent } from 'src/app/components/add-feedback/add-feedba
 import { ToastRelayService } from 'src/app/services/toast-relay/toast-relay.service';
 import { UpdateFeedbackComponent } from '../update-feedback/update-feedback.component';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Associate } from 'src/app/models/associate-model/associate.model';
 
 @Component({
   selector: 'app-view-feedback-associate',
@@ -16,6 +17,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
   styleUrls: ['./view-feedback-associate.component.css']
 })
 export class ViewFeedbackAssociateComponent implements OnInit {
+  associate: Associate;
   feedbackArray: Feedback[] = [];
   feedbackItem: Feedback;
   currentFeedback: Feedback;
@@ -32,23 +34,11 @@ export class ViewFeedbackAssociateComponent implements OnInit {
     private route: ActivatedRoute,
     private toastService: ToastRelayService,
     private ngFireAuth: AngularFireAuth, public afAuth: AngularFireAuth, ) {
-      /* https://www.positronx.io/full-angular-7-firebase-authentication-system/
-      Saving user data in localstorage when 
-    logged in and setting up null when logged out */
-    this.afAuth.authState.subscribe(user => {
-      if (user) {
-        this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('user'));
-      } else {
-        localStorage.setItem('user', null);
-        JSON.parse(localStorage.getItem('user'));
-      }
-    })
   }
      
 
   ngOnInit(): void {
+    this.associate = JSON.parse(sessionStorage.getItem('associate'));
     this.pullFeedbackData();
   }
 
@@ -56,7 +46,7 @@ export class ViewFeedbackAssociateComponent implements OnInit {
    * This method requests the data on feedbacks from the backend
    */
  pullFeedbackData() {
-  this.feedbackService.getFeedbackByAssociateId(this.userData.id)
+  this.feedbackService.getFeedbackByAssociateId(this.associate.id)
     .subscribe((data: any) => {
       this.feedbackArray = data;
     })

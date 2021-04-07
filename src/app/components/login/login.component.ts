@@ -47,22 +47,4 @@ export class LoginComponent implements OnInit {
       }
     });
   }
-    // this.loginService
-    //   .getManagerId(userCredentials.user.email)
-    //   .subscribe((managerId) => {
-    //     window.sessionStorage.setItem('managerId', managerId);
-    //   });
-    // // if(window.sessionStorage.getItem('managerId') == null){
-    // //   this.loginService.getAssociateId(userCredentials.user.email)
-    // //   .subscribe((associateId) => {
-    // //     window.sessionStorage.setItem('associateId', associateId);
-    // //   });
-    // // }
-    // this.router.navigate(['home']);
-  
-  // async registerUser(){
-  //   const associate = this.loginForm.value;
-  //   const userCredentials = await this.ngFireAuth
-  //   .createUserWithEmailAndPassword(associate.email,associate.password);
-  // }
 }

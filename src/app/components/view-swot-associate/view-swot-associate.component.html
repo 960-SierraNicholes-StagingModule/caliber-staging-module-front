@@ -1,0 +1,165 @@
+<div class = "flex">
+  <div class = "nav">
+    <a routerLink="/home">
+      <img
+        src="https://i.imgur.com/dYo5Z7w.png"
+        class="img-fluid logo"
+        alt="Revature Logo"
+      />
+      <p id="homeLink">Return to Home</p>
+    </a>
+    <div class="flex column mt-5 hide">
+      <span class="options">Here are some helpful tips:</span>
+      <p style="margin-top: 3rem">Click on "Report Progress" to report on your progress for meeting your SWOT goals.</p>
+      <p style="margin-top: 3rem">Click on an existing progress report to view more details.</p>
+      <p style="margin-top: 3rem">Click on a SWOT item to view notes on that item.</p>
+    </div>
+    <div class="toast-msg">
+      <app-toast-message></app-toast-message>
+    </div>
+    <button class="btn btn-primary logout-btn" (click)="logOut()">
+      Log Out
+    </button>
+  </div>
+  <div class="swot-content">
+    <section class="">
+    <div class="info-contain">
+      <div class="swot-info-options">
+        <div
+        id="display-box-info"
+        class=""
+        *ngIf="swot"
+        >
+        <h5>SWOT Analysis Info: </h5>
+          <p>
+            Associate: {{swot.associate.firstName}}
+            {{swot.associate.lastName}}
+          </p>
+          <p >
+            Created On: {{swot.createdOn | date:'short':'EST'}}
+          </p>
+          <p >
+            Last Modified: {{swot.lastModified | date:'short':'EST'}}
+          </p>
+        </div>
+      </div>
+    </div> 
+
+      <table *ngIf="swot" id="swot-table">
+        <tr>
+          <td class="table-data">
+            <div class="card" style="width: 20rem">
+              <h5 class="card-title">Strength</h5>
+              <div class="card-body">
+                <div class="btn-group-vertical">
+                  <ng-container
+                    *ngFor="let swotItem of swot.analysisItems"
+                  >
+                    <button
+                      *ngIf="swotItem.type == 'STRENGTH'"
+                      class="btn toggle-btn"
+                      (click)="openItemView(swotItem)"
+                    >
+                      {{swotItem.name}}
+                    </button>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="table-data">
+            <div class="card" style="width: 20rem">
+              <div class="card-body">
+                <h5 class="card-title">Weakness</h5>
+                <div class="btn-group-vertical">
+                  <ng-container
+                    *ngFor="let swotItem of swot.analysisItems"
+                  >
+                    <button
+                      *ngIf="swotItem.type == 'WEAKNESS'"
+                      class="btn toggle-btn"
+                      (click)="openItemView(swotItem)"
+                    >
+                      {{swotItem.name}}
+                    </button>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="table-data">
+            <div class="card" style="width: 20rem">
+              <div class="card-body">
+                <h5 class="card-title">Opportunity</h5>
+                <div class="btn-group-vertical">
+                  <ng-container
+                    *ngFor="let swotItem of swot.analysisItems"
+                  >
+                    <button
+                      *ngIf="swotItem.type == 'OPPORTUNITY'"
+                      class="btn toggle-btn"
+                      (click)="openItemView(swotItem)"
+                    >
+                      {{swotItem.name}}
+                    </button>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="table-data">
+            <div class="col-sm-4 scroll">
+              <div class="card" style="width: 20rem">
+                <div class="card-body">
+                  <h5 class="card-title">Threat</h5>
+                  <div class="btn-group-vertical">
+                    <ng-container
+                      *ngFor="let swotItem of swot.analysisItems"
+                    >
+
+                      <button
+                        *ngIf="swotItem.type == 'THREAT'"
+                        class="btn toggle-btn"
+                        (click)="openItemView(swotItem)"
+                      >
+                        {{swotItem.name}}
+                      </button>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </section>
+  
+
+  <button class="btn toggle-btn" style="padding:10px;display:block;margin-left:auto;margin-right:auto;" (click)="openProgressReport()">Report Progress</button>
+  <br><br>
+  <div class="swot-progress">
+    <div class="container options">
+      <table class="table table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Progress Reports</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="swot">
+          <tr *ngFor="let p of swot.progressReports; index as i;" (click)="openProgressReportView(p)">
+            <th scope="row cursor">{{ i+1 }}</th>
+            <td class="cursor" *ngIf="p.report.length > 100; else elseBlockShow">{{p.report.substring(0,50)}}&hellip;</td>
+            <ng-template #elseBlockShow><td class="cursor">{{ p.report }}</td></ng-template>
+            <td class="cursor">{{ p.createdDate | date: 'MMM d, y, h:mm:ss a' }}</td>
+          </tr>
+          <h3 class="no-reports" *ngIf="swot.progressReports.length == 0">No progress reports</h3>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  </div>
+</div>

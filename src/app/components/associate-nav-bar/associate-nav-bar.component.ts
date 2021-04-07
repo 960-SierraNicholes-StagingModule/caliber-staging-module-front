@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Swot } from 'src/app/models/swot-model/swot';
 
 @Component({
   selector: 'app-associate-nav-bar',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssociateNavBarComponent implements OnInit {
 
+  @Input()
+  selectedSwot: Swot;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  selectSwot(swot:Swot){
+    this.selectedSwot = swot;
+  }
+
+  deselectSwot(){
+    this.selectedSwot = null;
   }
 
 }
